@@ -74,7 +74,7 @@
 
 					$query->closeCursor();
 
-						header("Location:insertLangue.php");
+						header("Location:ReadLangue.php");
 
 			} //if (((isset($_POST['Lib1Lang'])) AND !empty($_POST['Lib1Lang'])) [...] AND (*Submit == "Valider")))
 			else {
@@ -93,11 +93,8 @@
 	$NumLang = "";
 ?>
 
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-	<meta charset="utf-8">
-</head>
+<?php include './includes/Head.php'; ?>
+
 <body>
 	<form method="POST" action="insertLangue.php">
 
@@ -117,62 +114,6 @@
 			<input type="submit" name="Submit" value="Valider">
 		</div>
 	</form>
-
-	<?php //liste langues
-	    $query = "SELECT * FROM LANGUE ORDER BY NumLang ASC;";
-	    try {
-	      $bdPdo_select = $bdPdo->prepare($query);
-	      $bdPdo_select->execute(); // recup toutes les infos nécéssaires
-	      $NbreData = $bdPdo_select->rowCount(); // nombre d'enregistrements
-	      $rowAll = $bdPdo_select->fetchAll();
-	    }
-	    catch (PDOException $e) {
-	      echo 'Erreur SQL : '. $e->getMessage().'<br/>';
-	      die();
-	    }
-
-	    if ($NbreData != 0) {
-	?>
-
-	<table border="1">
-	<thead>
-	  <tr>
-	      <th>NumLang</th>
-	      <th>Lib1Lang</th>
-	      <th>Lib2Lang</th>
-	      <th>NumPays</th>
-	      <th>Modifier</th>
-	      <th>Supprimer</th>
-	  </tr>
-	</thead>
-	<tbody>
-
-	<?php
-	  foreach ($rowAll as $row) { // pour chaque ligne
-	?>
-
-		<tr>
-		  <td><?php echo $row['NumLang']; ?></td>
-		  <td><?php echo $row['Lib1Lang']; ?></td>
-		  <td><?php echo $row['Lib2Lang']; ?></td>
-		  <td><?php echo $row['NumPays']; ?></td>
-		  <td><a href="EditLangue.php?id=<?php echo $row['NumLang'] ?>">Modifier</a></td>
-		  <td><a href="DeleteLangue.php?NumLang=<?php echo $row['NumLang'] ?>">Supprimer</a></td>
-		</tr>
-
-	<?php
-	  }
-	?>
-
-	</tbody>
-	</table>
-
-	<?php
-	}
-	else {
-	  echo "Il n'y a aucune langue enregistrée.";
-	}
-	?>
 
 </body>
 </html>

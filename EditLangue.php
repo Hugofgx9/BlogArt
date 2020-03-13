@@ -66,7 +66,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")  {
 
 			$query->closeCursor();
 
-			header("Location:insertLangue.php");
+			header("Location:ReadLangue.php");
 
 		} //if (((isset($_POST['Lib1Lang'])) AND !empty($_POST['Lib1Lang'])) [...] AND (*Submit == "Valider")))
 		else {
@@ -78,40 +78,41 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")  {
 
 } //if ($_SERVER["REQUEST_METHOD"] == "POST")
 
-
 ?>
 
 
-<h2> Edit <?php $NumLang ?> </h2>
 
-<form method="POST" action="EditLangue.php">
+<?php include './includes/Head.php'; ?>
 
-		<input type="hidden" id="id" name="id" value="<?php echo $_GET['id'] ?>">
+<body>
+	<h2> Edit <?php $NumLang ?> </h2>
 
-		<div>
-			<label>Libellé court</label>
-			<input type="text" name="Lib1Lang" id="Lib1Lang" size="25" maxlength="25" 
-			value="<?php if(isset($_GET['id']))echo $Lib1Lang?>">
-		</div>
+	<form method="POST" action="EditLangue.php">
 
-		<div>
-			<label>Libellé long</label>
-			<input type="text" name="Lib2Lang" id="Lib2Lang" size="40" maxlength="40" 
-			value="<?php if(isset($_GET['id']))echo $Lib2Lang?>">
-		</div>
+			<input type="hidden" id="id" name="id" value="<?php echo $_GET['id'] ?>">
 
-		<div>
-			<label>Language</label>
-			<input type="text" name="NumPays" size='10' maxlength="4" 
-			value="<?php if(isset($_GET['id']))echo $NumPays?>">
-		</div>
+			<div>
+				<label>Libellé court</label>
+				<input type="text" name="Lib1Lang" id="Lib1Lang" size="25" maxlength="25" 
+				value="<?php if(isset($_GET['id']))echo $Lib1Lang?>">
+			</div>
 
-		<div>
-			<input type="submit" name="Submit" value="Modifer">
-		</div>
-</form>
+			<div>
+				<label>Libellé long</label>
+				<input type="text" name="Lib2Lang" id="Lib2Lang" size="40" maxlength="40" 
+				value="<?php if(isset($_GET['id']))echo $Lib2Lang?>">
+			</div>
 
-<?php
+			<div>
+				<label>Language</label>
+				<input type="text" name="NumPays" size='10' maxlength="4" 
+				value="<?php if(isset($_GET['id']))echo $NumPays?>">
+			</div>
 
+			<div>
+				<input type="submit" name="Submit" value="Modifer">
+			</div>
+	</form>
 
-?>
+</body>
+</html>

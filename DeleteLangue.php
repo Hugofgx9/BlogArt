@@ -23,5 +23,5 @@ try {
 	}
 
 	$query->closeCursor();
-		header("Location:insertLangue.php");
+		header("Location:ReadLangue.php");
 ?>
