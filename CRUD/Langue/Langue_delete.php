@@ -1,6 +1,6 @@
 <?php
 
-include './includes/Connect_PDO.php';
+include '../includes/Connect_PDO.php';
 
 $NumLang = $_GET['NumLang'];
 
@@ -23,5 +23,5 @@ try {
 	}
 
 	$query->closeCursor();
-		header("Location:ReadLangue.php");
+		header("Location:Langue_read.php");
 ?>

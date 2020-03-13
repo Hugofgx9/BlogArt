@@ -1,7 +1,7 @@
 <?php
 
-include './includes/ctrlSaisies.php';
-include './includes/Connect_PDO.php';
+include '../includes/ctrlSaisies.php';
+include '../includes/Connect_PDO.php';
 
 //init les variables
 $Lib1Lang = "";
@@ -66,7 +66,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")  {
 
 			$query->closeCursor();
 
-			header("Location:ReadLangue.php");
+			header("Location:Langue_read.php");
 
 		} //if (((isset($_POST['Lib1Lang'])) AND !empty($_POST['Lib1Lang'])) [...] AND (*Submit == "Valider")))
 		else {
@@ -82,12 +82,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")  {
 
 
 
-<?php include './includes/Head.php'; ?>
+<?php include '../includes/Head.php'; ?>
 
 <body>
 	<h2> Edit <?php $NumLang ?> </h2>
 
-	<form method="POST" action="EditLangue.php">
+	<form method="POST" action="Langue_edit.php">
 
 			<input type="hidden" id="id" name="id" value="<?php echo $_GET['id'] ?>">
 

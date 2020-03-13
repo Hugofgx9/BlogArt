@@ -1,7 +1,7 @@
 <?php  
 	
-	include './includes/ctrlSaisies.php';
-	include './includes/Connect_PDO.php';
+	include '../includes/ctrlSaisies.php';
+	include '../includes/Connect_PDO.php';
 
 	if ($_SERVER["REQUEST_METHOD"] == "POST")  {
 
@@ -74,7 +74,7 @@
 
 					$query->closeCursor();
 
-						header("Location:ReadLangue.php");
+						header("Location:Langue_read.php");
 
 			} //if (((isset($_POST['Lib1Lang'])) AND !empty($_POST['Lib1Lang'])) [...] AND (*Submit == "Valider")))
 			else {
@@ -93,10 +93,10 @@
 	$NumLang = "";
 ?>
 
-<?php include './includes/Head.php'; ?>
+<?php include '../includes/Head.php'; ?>
 
 <body>
-	<form method="POST" action="insertLangue.php">
+	<form method="POST" action="Langue_insert.php">
 
 		<div>
 			<label>Libellé court</label>

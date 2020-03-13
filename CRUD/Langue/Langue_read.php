@@ -1,6 +1,6 @@
 <?php //liste langues
 
-		include './includes/Connect_PDO.php';
+		include '../includes/Connect_PDO.php';
 		
 	    $query = "SELECT * FROM LANGUE ORDER BY NumLang ASC;";
 	    try {
@@ -17,7 +17,7 @@
 	    if ($NbreData != 0) {
 ?>
 
-<?php include './includes/Head.php'; ?>
+<?php include '../includes/Head.php'; ?>
 
 <body>
 	<table border="1">
@@ -42,8 +42,8 @@
 			  <td><?php echo $row['Lib1Lang']; ?></td>
 			  <td><?php echo $row['Lib2Lang']; ?></td>
 			  <td><?php echo $row['NumPays']; ?></td>
-			  <td><a href="EditLangue.php?id=<?php echo $row['NumLang'] ?>">Modifier</a></td>
-			  <td><a href="DeleteLangue.php?NumLang=<?php echo $row['NumLang'] ?>">Supprimer</a></td>
+			  <td><a href="Langue_edit.php?id=<?php echo $row['NumLang'] ?>">Modifier</a></td>
+			  <td><a href="Langue_delete.php?NumLang=<?php echo $row['NumLang'] ?>">Supprimer</a></td>
 			</tr>
 
 		<?php
@@ -60,7 +60,7 @@
 	}
 	?>
 
-	<a href="insertLangue.php">Créer une nouvelle Langue</a>
+	<a href="Langue_insert.php">Créer une nouvelle Langue</a>
 
 </body>
 </html>
