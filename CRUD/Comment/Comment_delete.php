@@ -2,14 +2,14 @@
 
 include '../includes/Connect_PDO.php';
 
-$NumMoCle = $_GET['NumMoCle'];
+$NumCom = $_GET['NumCom'];
 
 try {
 		$bdPdo->beginTransaction();
-		$query = $bdPdo->prepare('DELETE FROM MOTCLE WHERE NumMoCle = :NumMoCle');
+		$query = $bdPdo->prepare('DELETE FROM COMMENT WHERE NumCom = :NumCom');
 		$query->execute(
 			array(
-				':NumMoCle' => $NumMoCle
+				':NumCom' => $NumCom,
 			)
 		);
 
@@ -21,5 +21,5 @@ try {
 	}
 
 	$query->closeCursor();
-		header("Location:MotCle_read.php");
+		header("Location:Comment_read.php");
 ?>

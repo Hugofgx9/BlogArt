@@ -10,7 +10,7 @@
 
 			if (((isset($_POST['Lib1Lang'])) AND !empty($_POST['Lib1Lang']))
 				AND ((isset($_POST['Lib2Lang'])) AND !empty($_POST['Lib2Lang']))
-				AND ((isset($_POST['NumPays'])) AND !empty($_POST['NumPays']))
+				//AND ((isset($_POST['NumPays'])) AND !empty($_POST['NumPays']))
 				AND (!empty($_POST['Submit']) AND ($Submit == "Valider"))) {
 
 				$erreur = false;
@@ -19,7 +19,9 @@
 
 				$Lib1Lang = (ctrlSaisies($_POST["Lib1Lang"]));
 				$Lib2Lang = (ctrlSaisies($_POST["Lib2Lang"]));
-				$NumPays = (ctrlSaisies($_POST["NumPays"]));
+				$NumPays = (ctrlSaisies($_POST["TypPays"]));
+
+				echo $NumPays;
 
 				$numPaysSelect = $NumPays; // exemple : 'CHIN'
 				$parmNumLang = $numPaysSelect . "%";
@@ -74,7 +76,7 @@
 
 					$query->closeCursor();
 
-						header("Location:Langue_read.php");
+					header("Location:Langue_read.php");
 
 			} //if (((isset($_POST['Lib1Lang'])) AND !empty($_POST['Lib1Lang'])) [...] AND (*Submit == "Valider")))
 			else {
@@ -106,13 +108,48 @@
 			<label>Libellé long</label>
 			<input type="text" name="Lib2Lang" id="Lib2Lang" size="40" maxlength="40">
 		</div>
+
+	    <!-- Listbox Pays -->
+        <div>
+	        <label for="LibTypPays">	     
+	                Quel pays :
+	        </label>
+	        <input type="hidden" id="idTypPays" name="idTypPays" value="<?php echo $numPays; ?>" />            
+	        <select size="1" name="TypPays" id="TypPays"  class="form-control form-control-create" tabindex="30" >
+			<?php 
+		            $numPays = "";
+		            $frPays = "";  
+
+		            // 2. Preparation requete NON PREPAREE
+		            // Récupération de l'occurrence pays à partir de l'id
+		            $queryText = 'SELECT * FROM PAYS;';
+
+		            // 3. Lancement de la requete SQL
+		            $result = $bdPdo->query($queryText);
+
+		            // S'il y a bien un resultat
+		            if ($result) {
+		                // Parcours chaque ligne du resultat de requete
+		                // Récupération du résultat de requête
+		                    while ($tuple = $result->fetch()) {
+		                        $ListnumPays = $tuple["numPays"];
+		                        $ListfrPays = $tuple["frPays"];
+			?>
+                    <option value="<?= $ListnumPays; ?>" >
+                        <?php echo $ListfrPays; ?>
+                    </option>
+			<?php 
+			                    } // End of while
+			            }   // if ($result)
+			?> 
+	        </select>
+    	</div>
+    	<!-- FIN Listbox Pays -->
+
 		<div>
-			<label>Language</label>
-			<input type="text" name="NumPays" size='4' maxlength="4">
+		<input type="submit" name="Submit" value="Valider">
 		</div>
-		<div>
-			<input type="submit" name="Submit" value="Valider">
-		</div>
+
 	</form>
 
 </body>

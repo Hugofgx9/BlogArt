@@ -42,7 +42,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")  {
 
 		if (((isset($_POST['Lib1Lang'])) AND !empty($_POST['Lib1Lang']))
 			AND ((isset($_POST['Lib2Lang'])) AND !empty($_POST['Lib2Lang']))
-			AND ((isset($_POST['NumPays'])) AND !empty($_POST['NumPays']))
 			AND ((isset($_POST['id'])) AND !empty($_POST['id']))
 			AND (!empty($_POST['Submit']) AND ($Submit == "Modifer"))) {
 
@@ -50,10 +49,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")  {
 
 			$nv_Lib1Lang = (ctrlSaisies($_POST["Lib1Lang"]));
 			$nv_Lib2Lang = (ctrlSaisies($_POST["Lib2Lang"]));
-			$nv_NumPays = (ctrlSaisies($_POST["NumPays"]));
+			$nv_NumPays = (ctrlSaisies($_POST["TypPays"]));
 			$NumLang = ($_POST["id"]);
 
-			$query = $bdPdo->prepare('UPDATE langue SET Lib1Lang = :nv_Lib1Lang, Lib2Lang = :nv_Lib2Lang, NumPays = :nv_NumPays WHERE NumLang = :NumLang');
+			$query = $bdPdo->prepare('UPDATE LANGUE SET Lib1Lang = :nv_Lib1Lang, Lib2Lang = :nv_Lib2Lang, NumPays = :nv_NumPays WHERE NumLang = :NumLang');
 
 			$query->execute(
 				array(
@@ -103,11 +102,41 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")  {
 				value="<?php if(isset($_GET['id']))echo $Lib2Lang?>">
 			</div>
 
-			<div>
-				<label>Language</label>
-				<input type="text" name="NumPays" size='10' maxlength="4" 
-				value="<?php if(isset($_GET['id']))echo $NumPays?>">
-			</div>
+					    <!-- Listbox Pays -->
+	        <div>
+		        <label for="LibTypPays">	     
+		                Quel pays :
+		        </label>
+		        <input type="hidden" id="idTypPays" name="idTypPays" value="<?php echo $NumPays; ?>" />            
+		        <select size="1" name="TypPays" id="TypPays"  class="form-control form-control-create" tabindex="30" >
+				<?php
+			            $frPays = "";  
+
+			            // 2. Preparation requete NON PREPAREE
+			            // Récupération de l'occurrence pays à partir de l'id
+			            $queryText = 'SELECT * FROM PAYS;';
+
+			            // 3. Lancement de la requete SQL
+			            $result = $bdPdo->query($queryText);
+
+			            // S'il y a bien un resultat
+			            if ($result) {
+			                // Parcours chaque ligne du resultat de requete
+			                // Récupération du résultat de requête
+			                    while ($tuple = $result->fetch()) {
+			                        $ListnumPays = $tuple["numPays"];
+			                        $ListfrPays = $tuple["frPays"];
+				?>    
+	                    <option value="<?= $ListnumPays; ?>" >
+	                        <?php echo $ListfrPays; ?>
+	                    </option>
+				<?php 
+				                    } // End of while
+				            }   // if ($result)
+				?> 
+		        </select>
+	    	</div>
+	    <!-- FIN Listbox Pays -->
 
 			<div>
 				<input type="submit" name="Submit" value="Modifer">
