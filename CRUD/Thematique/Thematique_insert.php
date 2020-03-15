@@ -19,59 +19,76 @@
 				$LibThem = (ctrlSaisies($_POST["LibThem"]));
 				$NumLang = (ctrlSaisies($_POST["TypLang"]));
 
-				$NumThemSelect = $NumThem; // exemple : 'CHIN'
-				$parmNumThem = $NumThemSelect . "%";
-				$requete = "SELECT MAX(NumThem) AS NumThem FROM THEMATIQUE WHERE NumThem LIKE '$parmNumThem';";
+		        // Découpage FK LANGUE 
+		        $LibLangSelect = substr($NumLang, 0, 4); 
+		        $parmNumLang = $LibLangSelect . '%';
 
-				$numSeqThem = 0;
+		        $requete = "SELECT MAX(NumLang) AS NumLang FROM THEMATIQUE WHERE NumLang LIKE '$parmNumLang';";
+		        $result = $bdPdo->query($requete);
 
-				$result = $bdPdo->query($requete);
+		        if ($result) {
+		            $tuple = $result->fetch();
+		            $NumLang = $tuple["NumLang"];
+		            if (is_null($NumLang)) {    // New lang dans THEMATIQUE
+		                // Récup dernière PK utilisée
+		                $requete = "SELECT MAX(NumThem) AS NumThem FROM THEMATIQUE;";
+		                $result = $bdPdo->query($requete);
+		                $tuple = $result->fetch();
+		                $NumThem = $tuple["NumThem"];
 
-				if ($result) {
+		                $NumThemSelect = (int)substr($NumThem, 3, 2);
+		                // No séquence suivant LANGUE
+		                $numSeq1Them = $NumThemSelect + 1;
+		                // Init no séquence THEMATIQUE pour nouvelle lang
+		                $numSeq2Them = 1;
+		            }
+		            else {
+		                // Récup dernière PK pour FK sélectionnée
+		                $requete = "SELECT MAX(NumThem) AS NumThem FROM THEMATIQUE WHERE NumLang LIKE '$parmNumLang' ;";
+		                $result = $bdPdo->query($requete);
+		                $tuple = $result->fetch();
+		                $NumThem = $tuple["NumThem"];
 
-					$tuple = $result->fetch();
-					$NumThem = $tuple["NumThem"];
+		                // No séquence actuel LANGUE
+		                $numSeq1Them = (int)substr($NumThem, 3, 2);
+		                // No séquence actuel THEMATIQUE
+		                $numSeq2Them = (int)substr($NumThem, 5, 2); 
+		                // No séquence suivant THEMATIQUE
+		                $numSeq2Them++;
+		            }
 
-					if (is_null($NumThem)) {
+		            $LibThemSelect = "THE";
+		            // PK reconstituée : THE + no seq langue
+		            if ($numSeq1Them < 10) {
+		                $NumThem = $LibThemSelect . "0" . $numSeq1Them;
+		            }
+		            else {
+		                $NumThem = $LibThemSelect . $numSeq1Them;
+		            }
+		            // PK reconstituée : THE + no seq langue + no seq thématique
+		            if ($numSeq2Them < 10) {
+		                $NumThem = $NumThem . "0" . $numSeq2Them;
+		            }
+		            else {
+		                $NumThem = $NumThem . $numSeq2Them;
+		            }
+		        }    //End of if ($result) / no seq LANGUE
 
-						$NumThem = 0;
-						$StrThem = $NumThemSelect;
+				$query = $bdPdo->prepare('INSERT INTO THEMATIQUE (NumThem, LibThem, NumLang) VALUES (:NumThem, :LibThem, :NumLang);');
 
-					} //if (is_null($NumThem))
-					else {
+				$query->execute(
+					array(
+						':NumThem' => $NumThem,
+						':LibThem' => $LibThem,
+						':NumLang' => $NumLang
+					) //array
+				); //$query->execute
 
-						$NumThem = $tuple["NumThem"];
-						$StrThem = substr($NumThem, 0, 4);
-						$numSeqThem = (int)substr($NumThem, 4);
-					} //else
+				$Themid = $NumThem;
 
-					$numSeqThem++;
+				$query->closeCursor();
 
-					// clé primR reconstituée
-					if ($numSeqThem < 10) {
-						$NumThem = $StrThem . "0" . $numSeqThem;
-					} //if ($numSeqThem < 10)
-					else {
-						$NumThem = $StrThem . $numSeqThem;
-					} //else
-				} //if ($result)
-
-
-					$query = $bdPdo->prepare('INSERT INTO Themue (NumThem, LibThem, NumLang) VALUES (:NumThem, :LibThem, :NumLang);');
-
-					$query->execute(
-						array(
-							':NumThem' => $NumThem,
-							':LibThem' => $LibThem,
-							':NumLang' => $NumLang
-						) //array
-					); //$query->execute
-
-					$Themid = $NumThem;
-
-					$query->closeCursor();
-
-						header("Location:Thematique_read.php");
+					header("Location:Thematique_read.php");
 
 			} //if (((isset($_POST['LibThem'])) AND !empty($_POST['LibThem'])) [...] AND (*Submit == "Valider")))
 			else {

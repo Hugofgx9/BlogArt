@@ -58,7 +58,7 @@
 	}
 	?>
 
-	<a href="Thematique_insert.php">Créer une nouvelle Langue</a>
+	<a href="Thematique_insert.php">Créer un nouveau mot-clé/a>
 
 </body>
 </html>
