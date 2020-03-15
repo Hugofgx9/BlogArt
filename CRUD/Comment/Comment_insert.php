@@ -9,30 +9,28 @@
 		$Submit = isset($_POST['Submit']) ? $_POST['Submit'] : '';
 
 			if (((isset($_POST['LibCom'])) AND !empty($_POST['LibCom']))
-				AND ((isset($_POST['DtCreC'])) AND !empty($_POST['DtCreC']))
+				// AND ((isset($_POST['DtCreC'])) AND !empty($_POST['DtCreC']))
 				AND ((isset($_POST['PseudoAuteur'])) AND !empty($_POST['PseudoAuteur']))
 				AND ((isset($_POST['EmailAuteur'])) AND !empty($_POST['EmailAuteur']))
 				AND ((isset($_POST['TitrCom'])) AND !empty($_POST['TitrCom']))
 				AND ((isset($_POST['NumArt'])) AND !empty($_POST['NumArt']))
-				AND ((isset($_POST['id'])) AND !empty($_POST['id']))
-				AND (!empty($_POST['Submit']) AND ($Submit == "Modifer"))) {
+				AND (!empty($_POST['Submit']) AND ($Submit == "Valider"))) {
+
 
 				$erreur = false;
 
 				$NumCom = 0;
-				$DtCreC = (ctrlSaisies($_POST["DtCreC"]));
+			    $dt = new DateTime();
+    			$DtCreC = $dt->format('Y-m-d H:i:s');
 				$PseudoAuteur = (ctrlSaisies($_POST["PseudoAuteur"]));
 				$EmailAuteur = (ctrlSaisies($_POST["EmailAuteur"]));
 				$TitrCom = (ctrlSaisies($_POST["TitrCom"]));
 				$LibCom = (ctrlSaisies($_POST["LibCom"]));
 				$NumArt = (ctrlSaisies($_POST["NumArt"]));
 
-
-				$NumComSelect = $NumCom; // exemple : 'CHIN'
+				$NumComSelect = $NumCom; // exemple : '021'
 				$parmNumCom = $NumComSelect . "%";
 				$requete = "SELECT MAX(NumCom) AS NumCom FROM COMMENT WHERE NumCom LIKE '$parmNumCom';";
-
-				$numSeqCom = 0;
 
 				$result = $bdPdo->query($requete);
 
@@ -43,28 +41,28 @@
 
 					if (is_null($NumCom)) {
 
-						$NumCom = 0;
-						$StrCom = $NumComSelect;
+						$NumCom = 001;
 
 					} //if (is_null($NumCom))
 					else {
 
 						$NumCom = $tuple["NumCom"];
-						$StrCom = substr($NumCom, 0, 4);
-						$numSeqCom = (int)substr($NumCom, 4);
+						$numSeqCom = (int)$NumCom;
 					} //else
 
 					$numSeqCom++;
 
 					// clé primR reconstituée
 					if ($numSeqCom < 10) {
-						$NumCom = $StrCom . "0" . $numSeqCom;
+						$NumCom = "00" . $numSeqCom;
 					} //if ($numSeqCom < 10)
+					else if ($numSeqCom < 100 ) {
+						$NumCom = "0" . $numSeqCom;
+					}
 					else {
-						$NumCom = $StrCom . $numSeqCom;
+						$NumCom = $numSeqCom;
 					} //else
 				} //if ($result)
-
 
 					$query = $bdPdo->prepare('INSERT INTO COMMENT (NumCom, DtCreC, PseudoAuteur, EmailAuteur, TitrCom, LibCom, NumArt) VALUES (:NumCom, :DtCreC, :PseudoAuteur, :EmailAuteur, :TitrCom, :LibCom, :NumArt);');
 
@@ -111,10 +109,10 @@
 <body>
 	<form method="POST" action="Comment_insert.php">
 
-		<div>
+<!-- 		<div>
 			<label>DtCreC</label>
 			<input type="datatime" name="DtCreC">
-		</div>
+		</div> -->
 
 		<div>
 			<label>PseudoAuteur</label>

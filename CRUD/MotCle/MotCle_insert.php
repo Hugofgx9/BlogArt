@@ -8,15 +8,16 @@
 		// SUBMIT
 		$Submit = isset($_POST['Submit']) ? $_POST['Submit'] : '';
 
-			if (((isset($_POST['LibMotCle'])) AND !empty($_POST['LibMotCle']))
+			if (((isset($_POST['LibMoCle'])) AND !empty($_POST['LibMoCle']))
 				AND ((isset($_POST['TypLang'])) AND !empty($_POST['TypLang']))
 				AND (!empty($_POST['Submit']) AND ($Submit == "Valider"))) {
 
+
 				$erreur = false;
 
-				$NumMotCle = 0;
+				$NumMoCle = 0;
 
-				$LibMotCle = (ctrlSaisies($_POST["LibMotCle"]));
+				$LibMoCle = (ctrlSaisies($_POST["LibMoCle"]));
 				$NumLang = (ctrlSaisies($_POST["TypLang"]));
 
 		      // Découpage FK LANGUE 
@@ -29,7 +30,7 @@
 		        if ($result) {
 		            $tuple = $result->fetch();
 		            $NumLang = $tuple["NumLang"];
-		            if (is_null($NumLang)) {    // New lang dans MOTCLE
+		            if (is_null($NumLang)) {    // New lang dans MOCLE
 		                // Récup dernière PK utilisée
 		                $requete = "SELECT MAX(NumMoCle) AS NumMoCle FROM MOTCLE;";
 		                $result = $bdPdo->query($requete);
@@ -39,7 +40,7 @@
 		                $NumMoCleSelect = (int)substr($NumMoCle, 4, 2);
 		                // No séquence suivant LANGUE
 		                $numSeq1MoCle = $NumMoCleSelect + 1;
-		                // Init no séquence MOTCLE pour nouvelle lang
+		                // Init no séquence MOCLE pour nouvelle lang
 		                $numSeq2MoCle = 1;
 		            }
 		            else {
@@ -51,9 +52,9 @@
 
 		                // No séquence actuel LANGUE
 		                $numSeq1MoCle = (int)substr($NumMoCle, 4, 2);
-		                // No séquence actuel MOTCLE
+		                // No séquence actuel MOCLE
 		                $numSeq2MoCle = (int)substr($NumMoCle, 6, 2); 
-		                // No séquence suivant MOTCLE
+		                // No séquence suivant MOCLE
 		                $numSeq2MoCle++;
 		            }
 
@@ -65,7 +66,7 @@
 		            else {
 		                $NumMoCle = $LibMoCleSelect . $numSeq1MoCle;
 		            }
-		            // PK reconstituée : MOCL + no seq langue + no seq mot clé
+		            // PK reconstituée : MOCL + no seq langue + no seq mo clé
 		            if ($numSeq2MoCle < 10) {
 		                $NumMoCle = $NumMoCle . "0" . $numSeq2MoCle;
 		            }
@@ -75,24 +76,23 @@
 		        }   // End of if ($result) / no seq LANGUE
 
 
-
-					$query = $bdPdo->prepare('INSERT INTO MOTCLE (NumMotCle, LibMotCle, NumLang) VALUES (:NumMotCle, :LibMotCle, :NumLang);');
+					$query = $bdPdo->prepare('INSERT INTO MOTCLE (NumMoCle, LibMoCle, NumLang) VALUES (:NumMoCle, :LibMoCle, :NumLang);');
 
 					$query->execute(
 						array(
-							':NumMotCle' => $NumMotCle,
-							':LibMotCle' => $LibMotCle,
+							':NumMoCle' => $NumMoCle,
+							':LibMoCle' => $LibMoCle,
 							':NumLang' => $NumLang
 						) //array
 					); //$query->execute
 
-					$MotCleid = $NumMotCle;
+					$MoCleid = $NumMoCle;
 
 					$query->closeCursor();
 
-						header("Location:MotCle_read.php");
+						//header("Location:MotCle_read.php");
 
-			} //if (((isset($_POST['LibMotCle'])) AND !empty($_POST['LibMotCle'])) [...] AND (*Submit == "Valider")))
+			} //if (((isset($_POST['LibMoCle'])) AND !empty($_POST['LibMoCle'])) [...] AND (*Submit == "Valider")))
 			else {
 
 				$erreur = true;
@@ -103,9 +103,9 @@
 	} //if ($_SERVER["REQUEST_METHOD"] == "POST")
 
 	//init les variables
-	$LibMotCle = "";
+	$LibMoCle = "";
 	$NumLang = "";
-	$NumMotCle = "";
+	$NumMoCle = "";
 ?>
 
 <?php include '../includes/Head.php'; ?>
@@ -115,7 +115,7 @@
 
 		<div>
 			<label>Libellé</label>
-			<input type="text" name="LibMotCle" id="LibMotCle" size="30" maxlength="30">
+			<input type="text" name="LibMoCle" id="LibMoCle" size="30" maxlength="30">
 		</div>
 				<!-- Listbox Pays -->
 		<div>

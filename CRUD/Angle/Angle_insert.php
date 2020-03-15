@@ -19,42 +19,60 @@
 				$LibAngl = (ctrlSaisies($_POST["LibAngl"]));
 				$NumLang = (ctrlSaisies($_POST["TypLang"]));
 
-				$NumAnglSelect = $NumAngl; // exemple : 'CHIN'
-				$parmNumAngl = $NumAnglSelect . "%";
-				$requete = "SELECT MAX(NumAngl) AS NumAngl FROM ANGLE WHERE NumAngl LIKE '$parmNumAngl';";
+				// Découpage FK LANGUE 
+		        $LibLangSelect = substr($NumLang, 0, 4); 
+		        $parmNumLang = $LibLangSelect . '%';
 
-				$numSeqAngl = 0;
+		        $requete = "SELECT MAX(NumLang) AS NumLang FROM ANGLE WHERE NumLang LIKE '$parmNumLang';";
+		        $result = $bdPdo->query($requete);
 
-				$result = $bdPdo->query($requete);
+		        if ($result) {
+		            $tuple = $result->fetch();
+		            $NumLang = $tuple["NumLang"];
+		            if (is_null($NumLang)) {    // New lang dans AnglATIQUE
+		                // Récup dernière PK utilisée
+		                $requete = "SELECT MAX(NumAngl) AS NumAngl FROM ANGLE;";
+		                $result = $bdPdo->query($requete);
+		                $tuple = $result->fetch();
+		                $NumAngl = $tuple["NumAngl"];
 
-				if ($result) {
+		                $NumAnglSelect = (int)substr($NumAngl, 4, 2);
+		                // No séquence suivant LANGUE
+		                $numSeq1Angl = $NumAnglSelect + 1;
+		                // Init no séquence AnglATIQUE pour nouvelle lang
+		                $numSeq2Angl = 1;
+		            }
+		            else {
+		                // Récup dernière PK pour FK sélectionnée
+		                $requete = "SELECT MAX(NumAngl) AS NumAngl FROM ANGLE WHERE NumLang LIKE '$parmNumLang' ;";
+		                $result = $bdPdo->query($requete);
+		                $tuple = $result->fetch();
+		                $NumAngl = $tuple["NumAngl"];
 
-					$tuple = $result->fetch();
-					$NumAngl = $tuple["NumAngl"];
+		                // No séquence actuel LANGUE
+		                $numSeq1Angl = (int)substr($NumAngl, 4, 2);
+		                // No séquence actuel AnglATIQUE
+		                $numSeq2Angl = (int)substr($NumAngl, 6, 2); 
+		                // No séquence suivant AnglATIQUE
+		                $numSeq2Angl++;
+		            }
 
-					if (is_null($NumAngl)) {
-
-						$NumAngl = 0;
-						$StrAngl = $NumAnglSelect;
-
-					} //if (is_null($NumAngl))
-					else {
-
-						$NumAngl = $tuple["NumAngl"];
-						$StrAngl = substr($NumAngl, 0, 4);
-						$numSeqAngl = (int)substr($NumAngl, 4);
-					} //else
-
-					$numSeqAngl++;
-
-					// clé primR reconstituée
-					if ($numSeqAngl < 10) {
-						$NumAngl = $StrAngl . "0" . $numSeqAngl;
-					} //if ($numSeqAngl < 10)
-					else {
-						$NumAngl = $StrAngl . $numSeqAngl;
-					} //else
-				} //if ($result)
+		            $LibAnglSelect = "ANGL";
+		            // PK reconstituée : THE + no seq langue
+		            if ($numSeq1Angl < 10) {
+		                $NumAngl = $LibAnglSelect . "0" . $numSeq1Angl;
+		            }
+		            else {
+		                $NumAngl = $LibAnglSelect . $numSeq1Angl;
+		            }
+		            // PK reconstituée : THE + no seq langue + no seq thématique
+		            if ($numSeq2Angl < 10) {
+		                $NumAngl = $NumAngl . "0" . $numSeq2Angl;
+		            }
+		            else {
+		                $NumAngl = $NumAngl . $numSeq2Angl;
+		            }
+		        }    //End of if ($result) / no seq LANGUE
 
 
 					$query = $bdPdo->prepare('INSERT INTO ANGLE (NumAngl, LibAngl, NumLang) VALUES (:NumAngl, :LibAngl, :NumLang);');
