@@ -1,0 +1,25 @@
+<?php
+
+include '../includes/Connect_PDO.php';
+
+$NumArt = $_GET['NumArt'];
+
+try {
+		$bdPdo->beginTransaction();
+		$query = $bdPdo->prepare('DELETE FROM ARTICLE WHERE NumArt = :NumArt');
+		$query->execute(
+			array(
+				':NumArt' => $NumArt,
+			)
+		);
+
+		$bdPdo->commit();
+	}
+
+	catch (PDOExeception $e) {
+		$bdPDO->rollBack();
+	}
+
+	$query->closeCursor();
+		header("Location:Article_read.php");
+?>

@@ -1,2 +1,13 @@
 Insert Motcle ne peux pas créer de clé pour des nouvelles langues même si les clés sont bien générées 
 Insert Thematique ne peux pas créer de clé pour des nouvelles langues même si les clés sont bien générées
+
+
+Article :
+chemin delete
+read : chemin + la liste des champs
+edit : chemin + la liste des variables
+insert : chemin + les variables + la clé primaire + table de jointure
+
+
+initialiser les variables pour tout les insert et edit
+

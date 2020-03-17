@@ -28,8 +28,7 @@
 				$LibCom = (ctrlSaisies($_POST["LibCom"]));
 				$NumArt = (ctrlSaisies($_POST["NumArt"]));
 
-				$NumComSelect = $NumCom; // exemple : '021'
-				$parmNumCom = $NumComSelect . "%";
+				$parmNumCom = "%"; // exemple : '021'
 				$requete = "SELECT MAX(NumCom) AS NumCom FROM COMMENT WHERE NumCom LIKE '$parmNumCom';";
 
 				$result = $bdPdo->query($requete);
