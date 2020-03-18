@@ -372,7 +372,8 @@
 				?> 
 		        </select>
 	    	</div>
-	    	<!-- FIN Listbox Theme -->
+	    	<!-- FIN Listbox MoCle1 -->
+
 
 			<div>
 				<input type="submit" name="Submit" value="Valider">

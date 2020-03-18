@@ -51,9 +51,27 @@ if (isset($_GET['id']) AND  $_GET['id']) {
 		$LibConclA = $object->LibConclA;
 		$UrlPhotA = $object->UrlPhotA;
 		$Likes = $object->Likes;
-		$NumAngl = $object->NumAngl;
-		$NumThem = $object->NumThem;
-		$NumLang = $object->NumLang;
+		$NumAngl_get = $object->NumAngl;
+		$NumThem_get = $object->NumThem;
+		$NumLang_get = $object->NumLang;
+
+	}
+
+	$queryText = 'SELECT * FROM MOTCLEARTICLE WHERE NumArt = :NumArt;';
+	$query = $bdPdo->prepare($queryText);
+	$query->execute(
+		array(
+			':NumArt' => $NumArt
+		)
+	);
+
+
+	//si il y a bien un résultat et qu'il ne comporte bien qu'une seule ligne
+	if ($query AND $query->rowCount() == 1) {
+
+
+		$object = $query->fetchObject();
+		$NumMoCle_get = $object->NumMoCle;
 
 	}
 
@@ -101,6 +119,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")  {
 			$nv_NumAngl = (ctrlSaisies($_POST["TypAngl"]));
 			$nv_NumThem = (ctrlSaisies($_POST["TypThem"]));
 			$nv_NumLang = (ctrlSaisies($_POST["TypLang"]));
+			$nv_MoCle = (ctrlSaisies($_POST["TypMoCle1"]));
 			$NumArt = ($_POST["id"]);
 
 			$query = $bdPdo->prepare('UPDATE ARTICLE SET DtCreA = :nv_DtCreA, LibTitrA = :nv_LibTitrA, LibChapoA = :nv_LibChapoA, LibAccrochA = :nv_LibAccrochA, Parag1A = :nv_Parag1A, LibSsTitr1 = :nv_LibSsTitr1, Parag2A = :nv_Parag2A, LibSsTitr2 = :nv_LibSsTitr2, Parag3A = :nv_Parag3A, LibConclA = :nv_LibConclA, UrlPhotA = :nv_UrlPhotA, NumAngl = :nv_NumAngl, NumThem = :nv_NumThem, NumLang = :nv_NumLang WHERE NumArt = :NumArt');
@@ -288,7 +307,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")  {
 			                        $ListNumAngl = $tuple["NumAngl"];
 			                        $ListLibAngl = $tuple["LibAngl"];
 				?>
-	                    <option value="<?= $ListNumAngl; ?>" >
+	                    <option <?php if ($ListNumAngl == $NumAngl_get)echo "selected='selected'"?> value="<?= $ListNumAngl; ?>" >
 	                        <?php echo $ListLibAngl; ?>
 	                    </option>
 				<?php 
@@ -338,7 +357,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")  {
 	    	<!-- FIN Listbox Theme -->	
 
 
-		    <!-- Listbox Theme -->
+		    <!-- Listbox Langue -->
 	        <div>
 		        <label for="LibTypLang">	     
 		                Langue :
@@ -364,8 +383,45 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")  {
 			                        $ListNumLang = $tuple["NumLang"];
 			                        $ListLib1Lang = $tuple["Lib1Lang"];
 				?>
-	                    <option value="<?= $ListNumLang; ?>" >
+	                    <option <?php if ($ListNumLang == $NumLang_get)echo "selected='selected'"?> value="<?= $ListNumLang; ?>" >
 	                        <?php echo $ListLib1Lang; ?>
+	                    </option>
+				<?php 
+				                    } // End of while
+				            }   // if ($result)
+				?> 
+		        </select>
+	    	</div>
+	    	<!-- FIN Listbox Langue -->
+
+		    <!-- Listbox MoCle1 -->
+	        <div>
+		        <label for="LibTypMoCle1">	     
+		                Mot Clé :
+		        </label>
+		        <input type="hidden" id="idTypMoCle1" name="idTypMoCle1" value="<?php echo $NumMoCle1; ?>" />            
+		        <select size="1" name="TypMoCle1" id="TypLang"  class="form-control form-control-create" tabindex="30" >
+				<?php 
+			            $NumMoCle1 = "";
+			            $LibMoCle1 = "";  
+
+			            // 2. Preparation requete NON PREPAREE
+			            // Récupération de l'occurrence pays à partir de l'id
+			            $queryText = 'SELECT * FROM MOTCLE;';
+
+			            // 3. Lancement de la requete SQL
+			            $result = $bdPdo->query($queryText);
+
+			            // S'il y a bien un resultat
+			            if ($result) {
+			                // Parcours chaque ligne du resultat de requete
+			                // Récupération du résultat de requête
+			                    while ($tuple = $result->fetch()) {
+			                        $ListNumMoCle1 = $tuple["NumMoCle"];
+			                        $ListLibMoCle1 = $tuple["LibMoCle"];
+				?>
+	                    <option <?php if ($ListNumMoCle1 == $NumMoCle_get)echo "selected='selected'"?> value="<?= $ListNumMoCle1; ?>" >
+	                        <?php echo $ListLibMoCle1; ?>
 	                    </option>
 				<?php 
 				                    } // End of while

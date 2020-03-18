@@ -127,7 +127,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")  {
 			                        $ListnumPays = $tuple["numPays"];
 			                        $ListfrPays = $tuple["frPays"];
 				?>    
-	                    <option value="<?= $ListnumPays; ?>" >
+	                    <option <?php if ($ListnumLang == $NumLang_get)echo "selected='selected'"?> value="<?= $ListnumPays; ?>" >
 	                        <?php echo $ListfrPays; ?>
 	                    </option>
 				<?php 

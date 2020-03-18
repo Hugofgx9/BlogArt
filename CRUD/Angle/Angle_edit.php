@@ -26,7 +26,7 @@ if (isset($_GET['id']) AND  $_GET['id']) {
 
 		$object = $query->fetchObject();
 		$LibAngl = $object->LibAngl;
-		$NumLang = $object->NumLang;
+		$NumLang_get = $object->NumLang;
 	}
 
 }
@@ -124,7 +124,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")  {
 		                        $ListnumLang = $tuple["NumLang"];
 		                        $ListfrLang = $tuple["Lib1Lang"];
 			?>
-                    <option value="<?= $ListnumLang; ?>" >
+                    <option <?php if ($ListnumLang == $NumLang_get)echo "selected='selected'"?> value="<?= $ListnumLang; ?>" >
                         <?php echo $ListfrLang; ?>
                     </option>
 			<?php 
