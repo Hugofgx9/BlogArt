@@ -127,7 +127,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")  {
 
 			$query->closeCursor();
 
-			header("Location:Article_read.php");
+			//suppression des mots clés
+			$query = $bdPdo->prepare('DELETE FROM MOTCLEARTICLE WHERE NumArt = :NumArt');
+			$query->execute(
+				array(
+					':NumArt' => $NumArt,
+				)
+			);
+
+			//ajout des mots clés
+			$query = $bdPdo->prepare('INSERT INTO MOTCLEARTICLE (NumArt, NumMoCle) VALUES (:NumArt, :NumMoCle);');
+			$query->execute(
+				array(
+					':NumArt' => $NumArt,
+					':NumMoCle' => $NumMoCle
+				)
+			);
+
+			$query->closeCursor();
+
+				header("Location:Article_read.php");
 
 		} //if (((isset($_POST['Parag1A'])) AND !empty($_POST['Parag1A'])) [...] AND (*Submit == "Valider")))
 		else {

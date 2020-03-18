@@ -45,6 +45,10 @@
 				$NumThem = (ctrlSaisies($_POST["TypThem"]));
 				$NumLang = (ctrlSaisies($_POST["TypLang"]));
 
+				$NumMoCle = (ctrlSaisies($_POST["TypMoCle1"]));
+
+
+
 				$parmNumArt = "%"; // exemple : '21'
 				$requete = "SELECT MAX(NumArt) AS NumArt FROM ARTICLE WHERE NumArt LIKE '$parmNumArt';";
 
@@ -92,11 +96,21 @@
 					) //array
 				); //$query->execute
 
-				$Artid = $NumArt;
+				$query->closeCursor();
+
+				$query = $bdPdo->prepare('INSERT INTO MOTCLEARTICLE (NumArt, NumMoCle) VALUES (:NumArt, :NumMoCle);');
+
+				$query->execute(
+					array(
+						':NumArt' => $NumArt,
+						':NumMoCle' => $NumMoCle
+					)
+				);
 
 				$query->closeCursor();
 
-					header("Location:Article_read.php");
+
+					//header("Location:Article_read.php");
 
 			} //if (((isset($_POST['LibArt'])) AND !empty($_POST['LibArt'])) [...] AND (*Submit == "Valider")))
 			else {
@@ -313,6 +327,44 @@
 				?>
 	                    <option value="<?= $ListNumLang; ?>" >
 	                        <?php echo $ListLib1Lang; ?>
+	                    </option>
+				<?php 
+				                    } // End of while
+				            }   // if ($result)
+				?> 
+		        </select>
+	    	</div>
+	    	<!-- FIN Listbox Theme -->
+
+
+		    <!-- Listbox MoCle1 -->
+	        <div>
+		        <label for="LibTypMoCle1">	     
+		                Mot Clé :
+		        </label>
+		        <input type="hidden" id="idTypMoCle1" name="idTypMoCle1" value="<?php echo $NumMoCle1; ?>" />            
+		        <select size="1" name="TypMoCle1" id="TypLang"  class="form-control form-control-create" tabindex="30" >
+				<?php 
+			            $NumMoCle1 = "";
+			            $LibMoCle1 = "";  
+
+			            // 2. Preparation requete NON PREPAREE
+			            // Récupération de l'occurrence pays à partir de l'id
+			            $queryText = 'SELECT * FROM MOTCLE;';
+
+			            // 3. Lancement de la requete SQL
+			            $result = $bdPdo->query($queryText);
+
+			            // S'il y a bien un resultat
+			            if ($result) {
+			                // Parcours chaque ligne du resultat de requete
+			                // Récupération du résultat de requête
+			                    while ($tuple = $result->fetch()) {
+			                        $ListNumMoCle1 = $tuple["NumMoCle"];
+			                        $ListLibMoCle1 = $tuple["LibMoCle"];
+				?>
+	                    <option value="<?= $ListNumMoCle1; ?>" >
+	                        <?php echo $ListLibMoCle1; ?>
 	                    </option>
 				<?php 
 				                    } // End of while

@@ -11,3 +11,6 @@ insert : chemin + les variables + la clé primaire + table de jointure
 
 initialiser les variables pour tout les insert et edit
 
+
+SELECTED
+
