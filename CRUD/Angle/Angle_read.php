@@ -20,7 +20,7 @@
 <?php include '../includes/Head.php'; ?>
 
 <body>
-	<table border="1">
+	<table>
 		<thead>
 		  <tr>
 		      <th>NumAngl</th>

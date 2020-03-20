@@ -20,28 +20,29 @@
 <?php include '../includes/Head.php'; ?>
 
 <body>
-	<table border="1">
+	<table>
 		<thead>
-		  <tr>
-		      <th>NumArt</th>
-		      <th>DtCreA</th>
-		      <th>LibTitrA</th>
-		      <th>LibChapoA</th>
-		      <th>LibAccrochA</th>
-		      <th>Parag1A</th>
-		      <th>LibSsTitr1</th>
-		      <th>Parag2A</th>
-		      <th>LibSsTitr2</th>
-		      <th>Parag3A</th>
-		      <th>LibConclA</th>
-		      <th>UrlPhotA</th>
-		      <th>Likes</th>
-		      <th>NumThem</th>
-		      <th>NumAngl</th>
-		      <th>NumLang</th>
-		      <th>Modifier</th>
-		      <th>Supprimer</th>
-		  </tr>
+		    <tr>
+
+		    	<th>NumArt</th>
+		    	<th>DtCreA</th>
+		    	<th>LibTitrA</th>
+		    	<th>LibChapoA</th>
+		    	<th>LibAccrochA</th>
+		    	<th>Parag1A</th>
+		    	<th>LibSsTitr1</th>
+		    	<th>Parag2A</th>
+		    	<th>LibSsTitr2</th>
+		    	<th>Parag3A</th>
+		    	<th>LibConclA</th>
+		    	<th>UrlPhotA</th>
+		    	<th>Likes</th>
+		    	<th>NumThem</th>
+		    	<th>NumAngl</th>
+		    	<th>NumLang</th>
+		    	<th>Modifier</th>
+		    	<th>Supprimer</th>
+		    </tr>
 		</thead>
 		<tbody>
 
@@ -50,24 +51,25 @@
 		?>
 
 			<tr>
-			  <td><?php echo $row['NumArt']; ?></td>
-			  <td><?php echo $row['DtCreA']; ?></td>
-			  <td><?php echo $row['LibTitrA']; ?></td>
-			  <td><?php echo $row['LibChapoA']; ?></td>
-			  <td><?php echo $row['LibAccrochA']; ?></td>
-			  <td><?php echo substr($row['Parag1A'], 0, 100) . "..."; ?></td>
-			  <td><?php echo $row['LibSsTitr1']; ?></td>
-			  <td><?php echo substr($row['Parag2A'], 0, 100) . "..."; ?></td>
-			  <td><?php echo $row['LibSsTitr2']; ?></td>
-			  <td><?php echo substr($row['Parag3A'], 0, 100) . "..."; ?></td>
-			  <td><?php echo substr($row['LibConclA'], 0, 100) . "..."; ?></td>
-			  <td><?php echo $row['UrlPhotA']; ?></td>
-			  <td><?php echo $row['Likes']; ?></td>
-			  <td><?php echo $row['NumThem']; ?></td>
-			  <td><?php echo $row['NumAngl']; ?></td>
-			  <td><?php echo $row['NumLang']; ?></td>
-			  <td><a href="Article_edit.php?id=<?php echo $row['NumArt'] ?>">Modifier</a></td>
-			  <td><a href="Article_delete.php?NumArt=<?php echo $row['NumArt'] ?>" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet article ?');">Supprimer</a></td>
+
+				<td><a href="Article_show.php?id=<?php echo $row['NumArt'] ?>"><?php echo $row['NumArt']; ?></a></td>
+				<td><?php echo $row['DtCreA']; ?></td>
+				<td><?php echo $row['LibTitrA']; ?></td>
+				<td><?php echo substr($row['LibChapoA'], 0 , 50) . "..."; ?></td>
+				<td><?php echo substr($row['LibAccrochA'], 0 , 50) . "..."; ?></td>
+				<td><?php echo substr($row['Parag1A'], 0, 50) . "..."; ?></td>
+				<td><?php echo $row['LibSsTitr1']; ?></td>
+				<td><?php echo substr($row['Parag2A'], 0, 50) . "..."; ?></td>
+				<td><?php echo $row['LibSsTitr2']; ?></td>
+				<td><?php echo substr($row['Parag3A'], 0, 50) . "..."; ?></td>
+				<td><?php echo substr($row['LibConclA'], 0, 50) . "..."; ?></td>
+				<td><?php echo $row['UrlPhotA']; ?></td>
+				<td><?php echo $row['Likes']; ?></td>
+				<td><?php echo $row['NumThem']; ?></td>
+				<td><?php echo $row['NumAngl']; ?></td>
+				<td><?php echo $row['NumLang']; ?></td>
+				<td><a href="Article_edit.php?id=<?php echo $row['NumArt'] ?>">Modifier</a></td>
+				<td><a href="Article_delete.php?NumArt=<?php echo $row['NumArt'] ?>" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet article ?');">Supprimer</a></td>
 			</tr>
 
 		<?php
