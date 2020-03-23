@@ -84,7 +84,7 @@ if (isset($_GET['id']) AND  $_GET['id']) {
 <?php include '../includes/Head.php'; ?>
 
 <body>
-	<h2> Edit <?php $NumArt ?> </h2>
+	<h2> SHOW <?php echo $NumArt ?> </h2>
 
 			<input type="hidden" id="id" name="id" value="<?php echo $_GET['id'] ?>">
 
@@ -140,7 +140,7 @@ if (isset($_GET['id']) AND  $_GET['id']) {
 
 			<p>
 				<strong>UrlPhotA : </strong>
-				<?php if(isset($_GET['id']))echo $UrlPhotA?>
+				<img src="<?php if(isset($_GET['id']))echo $UrlPhotA?>">
 			</p>
 
 			<p>
@@ -162,6 +162,11 @@ if (isset($_GET['id']) AND  $_GET['id']) {
 			<p>
 				<strong>NumLang : </strong>
 				<?php if(isset($_GET['id']))echo $NumLang_get?>
+			</p>
+
+			<p>
+				<strong>NumMoCle : </strong>
+				<?php if(isset($_GET['id']))echo $NumMoCle_get?>
 			</p>
 
 	</form>

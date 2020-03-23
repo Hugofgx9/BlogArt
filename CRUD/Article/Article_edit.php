@@ -252,7 +252,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")  {
 
 			<div>
 				<label>UrlPhotA</label>
-				<input type="text" size='62' maxlength="62" name="UrlPhotA" id="UrlPhotA"
+				<input type="text" size='200' maxlength="200" name="UrlPhotA" id="UrlPhotA"
 				value="<?php if(isset($_GET['id']))echo $UrlPhotA?>">
 			</div>
 
