@@ -13,6 +13,8 @@
 <!-- 		<a><img src="assets/png/logo.png"></a> -->
 	</nav>
 
+	<img class="logo" src="assets/png/logo.png" alt="Logo de l'Avant Première Bordelaise">
+
 	<div class="container"> <!-- Corps de la page -->
 
 		<div id="last_art">

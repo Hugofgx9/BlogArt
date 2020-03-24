@@ -4,7 +4,7 @@
 	$hostBD = 'localhost';
 	$nameBD = 'BLOGART20';
 	$user = 'root';
-	$password = 'root';
+	$password = '';
 
 	try
 	{

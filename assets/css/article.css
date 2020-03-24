@@ -9,7 +9,69 @@
 }
 
 .container p {
-	grid-column: 2/12;
+	grid-column: 2/9;
 }
 
+.container h1 {
+	grid-column: 3/11;
+}
+
+.container h2, h3, h4 {
+	grid-column: 2/12;
+	line-height: 150%;
+}
+
+input {
+	grid-column: 10/13;
+	font-family: 'MADE Canvas Regular';
+	font-size: 22px;
+	border: 0px;
+}
+
+/*IMAGE*/
+
+img {
+	grid-column: 3/10;
+	width: 50vw;
+}
+
+.like {
+	width: 5%;
+}
+.nbLike {
+	font-family: 'Big John';
+	font-size: 33px;
+	vertical-align: middle;
+}
+
+a {
+	grid-column: 4/9;
+	height: 0px;
+}
+
+/*TEXTE*/
+
+h1 /*TITRES*/{
+	text-align: center;
+	font-family: 'Big John';
+	font-size: 50px;
+	margin-top: 0px;
+}
+
+h2 /*CHAPPOS*/ {
+	text-align: center;
+	font-family: 'MADE Canvas Regular';
+	font-size: 30px;
+}
+
+h3 /*SS-TITRES*/ {
+	font-family: 'MADE Canvas Black';
+	font-size: 33px;
+}
+
+h4 /*§ + CONCLUSION*/ {
+	font-family: 'MADE Canvas Light';
+	font-size: 22px;
+	margin-top: 0px;
+}
 

@@ -94,87 +94,100 @@ if (isset($_GET['id']) AND  $_GET['id']) {
 	</nav>
 
 	<div class=container>
+
+		<a href="index.php"><img class="logo" src="assets/png/logo.png" alt="Logo de l'Avant Première Bordelaise"></a>
+
+		<input type="input" name="search">
+
 		<h2> SHOW <?php echo $NumArt ?> </h2>
 
 		<input type="hidden" id="id" name="id" value="<?php echo $_GET['id'] ?>">
 
-		<p>
-			<img src="<?php if(isset($_GET['id']))echo $UrlPhotA?>">
-		</p>
+			<!-- <img src="<?php if(isset($_GET['id']))echo $UrlPhotA?>"> -->
+			<img src="assets/png/art1.jpg" alt="Couverture de l'article">
 
-		<p>
-			<strong>LibTitrA : </strong>
+		<h1>
+			<!-- <acronym title="LibTitrA :"> -->
 			<?php if(isset($_GET['id']))echo $LibTitrA?>
-		</p>
+			<!-- </acronym> -->
+		</h1>
 
-		<p>
-			<strong>LibChapoA : </strong>
+		<h2>
+			 <!-- <acronym title="LibChapoA :"> -->
 			<?php if(isset($_GET['id']))echo $LibChapoA?>
-		</p>
+			<!-- </acronym> -->
+		</h2>
 
-		<p>
-			<strong>LibAccrochA : </strong>
+		<h4>
+			 <!-- <acronym title="LibAccrochA :"> -->
 			<?php if(isset($_GET['id']))echo $LibAccrochA?>
-		</p>			
-
-		<p>
-			<strong>Parag1A : </strong>
+			<!-- </acronym> -->
+			 <!-- <acronym title="Parag1A :"> -->
 			<?php if(isset($_GET['id']))echo $Parag1A?>
-		</p>
+			<!-- </acronym> -->
+		</h4>
 
-		<p>
-			<strong>LibSsTitr1 : </strong>
+		<h3>
+			 <!-- <acronym title="LibSsTitr1 :"> -->
 			<?php if(isset($_GET['id']))echo $LibSsTitr1?>
-		</p>	
+			<!-- </acronym> -->
+		</h3>
 
-		<p>
-			<strong>Parag2A : </strong>
+		<h4>
+			 <!-- <acronym title="Parag2A :"> -->
 			<?php if(isset($_GET['id']))echo $Parag2A?>
-		</p>
+			<!-- </acronym> -->
+		</h4>
 
-		<p>
-			<strong>LibSsTitr2 : </strong>
+		<h3>
+			 <!-- <acronym title="LibSsTitr2 :"> -->
 			<?php if(isset($_GET['id']))echo $LibSsTitr2?>
-		</p>
+			<!-- </acronym> -->
+		</h3>
 
-		<p>
-			<strong>Parag3A : </strong>
+		<h4>
+			 <!-- <acronym title="Parag3A :"> -->
 			<?php if(isset($_GET['id']))echo $Parag3A?>
-		</p>
+			<!-- </acronym> -->
+		</h4>
 
-		<p>
-			<strong>LibConclA : </strong>
+		<h4>
+			 <!-- <acronym title="LibConclA :"> -->
 			<?php if(isset($_GET['id']))echo $LibConclA?>
+			<!-- </acronym> -->
 		</p>	
 
-		<p>
-			<img src="<?php if(isset($_GET['id']))echo $UrlPhotA?>">
-		</p>
-
-		<p>
-			<strong>Likes : </strong>
+		<p  class="nbLike">
+			<!-- <acronym <img src="<?php if(isset($_GET['id']))echo $UrlPhotA?>"> -->
+			<img src="assets/png/unlike.png" class="like" alt="Like">
+			<!-- </acronym> -->
+			 <!-- <acronym title="Likes :"> -->
 			<?php if(isset($_GET['id']))echo $Likes?>
-		</p>
-
-			<p>
-			<strong>NumAngl : </strong>
-			<?php if(isset($_GET['id']))echo $NumAngl_get?>
+			<!-- </acronym> -->
 		</p>
 
 		<p>
-			<strong>NumThem : </strong>
+			 <!-- <acronym title="NumAngl :"> -->
+			<?php if(isset($_GET['id']))echo $NumAngl_get?>
+			<!-- </acronym> -->
+		</p>
+
+		<p>
+			 <!-- <acronym title="NumThem :"> -->
 			<?php if(isset($_GET['id']))echo $NumThem_get?>
+			<!-- </acronym> -->
 		</p>		
 
-
 		<p>
-			<strong>NumLang : </strong>
+			 <!-- <acronym title="NumLang :"> -->
 			<?php if(isset($_GET['id']))echo $NumLang_get?>
+			<!-- </acronym> -->
 		</p>
 
 		<p>
-			<strong>NumMoCle : </strong>
+			 <!-- <acronym title="NumMoCle :"> -->
 			<?php if(isset($_GET['id']))echo $NumMoCle_get?>
+			<!-- </acronym> -->
 		</p>
 	</div>
 
