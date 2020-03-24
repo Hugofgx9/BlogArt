@@ -7,11 +7,21 @@
 
 nav {
 	height: 170px;
-	background-image: url("./png/fond_nav.png");
+	background-image: url("../png/fond_nav.png");
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;
 }
+
+footer {
+	height: 170px;
+	background-image: url("../png/fond_nav.png");
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+/*TABLEAUX*/
 
 tr:nth-child(even) {
 	background: #CCC;
@@ -32,11 +42,3 @@ table {
 	border-collapse: collapse;
 }
 
-
-/*DISPOSTION DES ELEMENTS*/
- 
-.container {
-  display: grid;
-  grid-column-gap: 30px;
-  grid-template-columns: repeat(12, 1fr);
-}
