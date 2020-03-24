@@ -8,3 +8,4 @@ include './includes/Head.php'
 <a href="Langue/Langue_read.php">Langue</a>
 <a href="MotCle/MotCle_read.php">MotCle</a>
 <a href="Thematique/Thematique_read.php">Thematique</a>
+<a href="User/User_read.php">User</a>
