@@ -99,13 +99,13 @@ if (isset($_GET['id']) AND  $_GET['id']) {
 
 		<input type="input" name="search">
 
-		<h2> SHOW <?php echo $NumArt ?> </h2>
+		<!-- <h2> SHOW <?php echo $NumArt ?> </h2> -->
 
 		<input type="hidden" id="id" name="id" value="<?php echo $_GET['id'] ?>">
 
 			<!-- <img src="<?php if(isset($_GET['id']))echo $UrlPhotA?>"> -->
 			<img src="assets/png/art1.jpg" alt="Couverture de l'article">
-
+			<p class="date">JJ/MM/AAAA HH:MM</p>
 		<h1>
 			<!-- <acronym title="LibTitrA :"> -->
 			<?php if(isset($_GET['id']))echo $LibTitrA?>
@@ -162,7 +162,7 @@ if (isset($_GET['id']) AND  $_GET['id']) {
 			<img src="assets/png/unlike.png" class="like" alt="Like">
 			<!-- </acronym> -->
 			 <!-- <acronym title="Likes :"> -->
-			<?php if(isset($_GET['id']))echo $Likes?>
+			<?php if(isset($_GET['id']))echo $Likes?> J'aimes
 			<!-- </acronym> -->
 		</p>
 

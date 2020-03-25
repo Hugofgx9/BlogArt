@@ -30,12 +30,15 @@
 }
 
 body {
+	background-image: url("../png/background.jpg");
 	margin: 0px;
 	background-color: #F8F8F8;
+	background-attachment:fixed;
+	background-size: cover;
 }
 
 nav {
-	height: 120px;
+	height: 5vw;
 	background-image: url("../png/fond_nav.png");
 	background-position: center;
 	background-repeat: no-repeat;
@@ -46,7 +49,7 @@ nav {
 }
 
 footer {
-	height: 120px;
+	height: 80px;
 	background-image: url("../png/fond_nav.png");
 	background-position: center;
 	background-repeat: no-repeat;
@@ -56,7 +59,7 @@ footer {
 .logo {
 	 grid-column: 4/9;
 	 position: relative;
-	 width: 40vw;
+	 width: 500px;
 	 margin-top: -200px;
 	 margin-bottom: 25px;
 }
@@ -64,8 +67,11 @@ footer {
 input {
 	grid-column: 10/13;
 	font-family: 'MADE Canvas Regular';
-	font-size: 22px;
-	padding: 5px;
+	font-size: 20px;
+	padding: 8px;
+	border: 0px;
+    margin-top: -50px;
+    margin-bottom: 50px;
 }
 
 /*TABLEAUX*/

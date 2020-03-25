@@ -16,40 +16,45 @@
 	grid-column: 3/11;
 }
 
-.container h2, h3, h4 {
+.container h2, h3 {
 	grid-column: 2/12;
 	line-height: 150%;
 }
 
-input {
-	grid-column: 10/13;
-	font-family: 'MADE Canvas Regular';
-	font-size: 22px;
-	border: 0px;
+.container h4 {
+	grid-column: 2/11;
+	line-height: 150%;
 }
 
 /*IMAGE*/
 
 img {
-	grid-column: 3/10;
-	width: 500vw;
+	grid-column: 4/11;
+	width: 44vw;
 }
 
 .like {
-	width: 5%;
+	width: 3%;
 }
 .nbLike {
-	font-family: 'Big John';
-	font-size: 33px;
+	font-family: 'MADE Canvas Regular';
+	font-size: 30px;
 	vertical-align: middle;
 }
 
 a {
-	grid-column: 4/9;
+	grid-column: 5/9;
 	height: 0px;
 }
 
 /*TEXTE*/
+
+p.date {
+	grid-column: 3/11;
+	text-align: center;
+	color: white;
+	margin-top: -50px;
+}
 
 h1 /*TITRES*/{
 	text-align: center;
@@ -67,6 +72,7 @@ h2 /*CHAPPOS*/ {
 h3 /*SS-TITRES*/ {
 	font-family: 'MADE Canvas Black';
 	font-size: 33px;
+	margin-bottom: 15px;
 }
 
 h4 /*§ + CONCLUSION*/ {
