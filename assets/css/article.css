@@ -32,7 +32,7 @@ input {
 
 img {
 	grid-column: 3/10;
-	width: 50vw;
+	width: 500vw;
 }
 
 .like {
