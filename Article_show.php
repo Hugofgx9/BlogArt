@@ -99,6 +99,8 @@ if (isset($_GET['id']) AND  $_GET['id']) {
 
 		<input type="input" name="search">
 
+		<a class="user" href="Connexion.php"><img class="user" src="assets/png/user.png" alt="Bouton User"></a>
+
 		<!-- <h2> SHOW <?php echo $NumArt ?> </h2> -->
 
 		<input type="hidden" id="id" name="id" value="<?php echo $_GET['id'] ?>">
