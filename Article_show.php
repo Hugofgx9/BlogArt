@@ -97,7 +97,7 @@ if (isset($_GET['id']) AND  $_GET['id']) {
 
 		<a href="index.php"><img class="logo" src="assets/png/logo.png" alt="Logo de l'Avant Première Bordelaise"></a>
 
-		<input type="input" name="search">
+		<input class="search" type="input" name="search">
 
 		<a class="user" href="Connexion.php"><img class="user" src="assets/png/user.png" alt="Bouton User"></a>
 

@@ -48,6 +48,23 @@ nav {
 	
 }
 
+.logo {
+	 grid-column: 4/9;
+	 grid-row: 1;
+	 position: relative;
+	 width: 500px;
+	 margin-top: -200px;
+	 margin-bottom: 25px;
+	 margin-left: 27vw;
+}
+
+.user {
+	grid-row: 1;
+	width: 100%;
+	grid-column: 2;
+    margin-top: -55px;
+}
+
 footer {
 	height: 80px;
 	background-image: url("../png/fond_nav.png");
@@ -56,22 +73,28 @@ footer {
 	background-size: cover;
 }
 
-.logo {
-	 grid-column: 4/9;
-	 position: relative;
-	 width: 500px;
-	 margin-top: -200px;
-	 margin-bottom: 25px;
-}
-
 input {
 	grid-column: 10/13;
+	grid-row: 1;
 	font-family: 'MADE Canvas Regular';
 	font-size: 20px;
 	padding: 8px;
 	border: 0px;
+}
+input.search {
     margin-top: -50px;
-    margin-bottom: 50px;
+    margin-bottom: 50px;	
+}
+
+form {
+	grid-column : 4/9;
+}
+
+p.formulaire label {
+	grid-column: 5/9; 
+	grid-row: 2;
+	text-align: center;
+	font-family: "MADE Canvas Regular";
 }
 
 /*TABLEAUX*/

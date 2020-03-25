@@ -33,12 +33,6 @@ img {
 	width: 44vw;
 }
 
-.user {
-	width: 100%;
-	grid-column: 2;
-    margin-top: -55px;
-}
-
 .like {
 	width: 3%;
 }
@@ -49,7 +43,7 @@ img {
 }
 
 a {
-	grid-column: 5/9;
+	grid-column: 1/12;
 	height: 0px;
 }
 

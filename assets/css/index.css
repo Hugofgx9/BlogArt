@@ -11,22 +11,22 @@
 
 #last_art {
 	grid-column: 2/12;
-	grid-row: 1;
+	grid-row: 2;
 }
 
 #art_popu {
 	grid-column: 2/12;
-	grid-row: 2;
+	grid-row: 3;
 }
 
 #events {
 	grid-column: 2/12;
-	grid-row: 3;
+	grid-row: 4;
 }
 
 #portraits {
 	grid-column: 2/12;
-	grid-row: 4;
+	grid-row: 5;
 }
 
 .trio {
