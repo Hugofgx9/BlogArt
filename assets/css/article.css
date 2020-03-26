@@ -43,7 +43,7 @@ img {
 }
 
 a {
-	grid-column: 5/9;
+	grid-column: 1/12;
 	height: 0px;
 }
 

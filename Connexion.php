@@ -5,15 +5,34 @@ include("CRUD/includes/Connect_PDO.php");
 include './CRUD/includes/ctrlSaisies.php';
 ?>
 
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="assets/css/general.css">
+	<link rel="stylesheet" href="assets/css/article.css">
+</head>
+
+<body>
+
+	<nav>
+	</nav>
+
+	<div class=container>
+
+		<a href="index.php"><img class="logo" src="assets/png/logo.png" alt="Logo de l'Avant Première Bordelaise"></a>
+
 <h1>Connexion</h1>
 
 <?php
 if (!isset($_POST['Login'])) //On est dans la page de formulaire
 {
 	echo '<form method="post" action="connexion.php">
-	<p>
-	<label for="Login">Login :</label><input name="Login" type="text" id="Login" /><br />
-	<label for="Pass">Mot de Passe :</label><input type="password" name="Pass" id="Pass" />
+	<p class="formulaire">
+	<label for="Login">Login : </label><input name="Login" type="text" id="Login" /><br />
+	<label for="Pass">Mot de Passe : </label><input type="password" name="Pass" id="Pass" />
 	</p>
 	<p><input type="submit" value="Connexion" /></p></form>
 	<a href="./register.php">Pas encore inscrit ?</a>
@@ -66,6 +85,8 @@ else
 
 
 
+</body>
+</html>
 
 
 
