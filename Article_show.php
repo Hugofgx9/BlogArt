@@ -109,7 +109,7 @@ if (isset($_GET['id']) AND  $_GET['id']) {
 		<input type="hidden" id="id" name="id" value="<?php echo $_GET['id'] ?>">
 
 			<!-- <img src="<?php if(isset($_GET['id']))echo $UrlPhotA?>"> -->
-			<img src="assets/png/art1.jpg" alt="Couverture de l'article">
+			<img src="assets/image_article/<?php if(isset($_GET['id']))echo $UrlPhotA?>" alt="Couverture de l'article">
 			<p class="date">JJ/MM/AAAA HH:MM</p>
 		<h1>
 			<!-- <acronym title="LibTitrA :"> -->

@@ -17,11 +17,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")  {
 			AND ((isset($_POST['LibSsTitr2'])) AND !empty($_POST['LibSsTitr2']))
 			AND ((isset($_POST['Parag3A'])) AND !empty($_POST['Parag3A']))
 			AND ((isset($_POST['LibConclA'])) AND !empty($_POST['LibConclA']))
-			AND ((isset($_POST['UrlPhotA'])) AND !empty($_POST['UrlPhotA']))
+			//AND ((isset($_POST['UrlPhotA'])) AND !empty($_POST['UrlPhotA']))
 			AND ((isset($_POST['Likes'])) AND !empty($_POST['Likes']))
 			//AND ((isset($_POST['NumAngl'])) AND !empty($_POST['NumAngl']))
 			//AND ((isset($_POST['NumThem'])) AND !empty($_POST['NumThem']))
 			//AND ((isset($_POST['NumLang'])) AND !empty($_POST['NumLang']))
+			AND (!empty($_FILES['UrlPhotA']['size']))
 			AND (!empty($_POST['Submit']) AND ($Submit == "Valider"))) {
 
 
@@ -39,7 +40,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")  {
 			$LibSsTitr2 = (ctrlSaisies($_POST["LibSsTitr2"]));
 			$Parag3A = (ctrlSaisies($_POST["Parag3A"]));
 			$LibConclA = (ctrlSaisies($_POST["LibConclA"]));
-			$UrlPhotA = (ctrlSaisies($_POST["UrlPhotA"]));
+			//$UrlPhotA = (ctrlSaisies($_POST["UrlPhotA"]));
 			$Likes = (ctrlSaisies($_POST["Likes"]));
 			$NumAngl = (ctrlSaisies($_POST["TypAngl"]));
 			$NumThem = (ctrlSaisies($_POST["TypThem"]));
@@ -49,68 +50,121 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")  {
 
 
 
-			$parmNumArt = "%"; // exemple : '21'
-			$requete = "SELECT MAX(NumArt) AS NumArt FROM ARTICLE WHERE NumArt LIKE '$parmNumArt';";
+		    //Vérification de l'UrlPhotA :
 
-			$result = $bdPdo->query($requete);
+	        //On définit les variables :
+	        $i = 0;
+	        $UrlPhotA_erreur="";
+	        $maxsize = 100240000; //Poid de l'image
+	        $maxwidth = 1000000; //Largeur de l'image
+	        $maxheight = 1000000; //Longueur de l'image
+	        $extensions_valides = array( 'jpg' , 'jpeg' , 'gif' , 'png', 'bmp' ); //Liste des extensions valides
+	        $image_sizes = getimagesize($_FILES['UrlPhotA']['tmp_name']);
+	        $extension_upload = strtolower(substr(  strrchr($_FILES['UrlPhotA']['name'], '.')  ,1));
+	        
+	        if ($_FILES['UrlPhotA']['error'] > 0)
+	        {
+	                $UrlPhotA_erreur = "Erreur lors du transfert de la Photo : ";
+	        }
+	        elseif ($_FILES['UrlPhotA']['size'] > $maxsize)
+	        {
+	                $i++;
+	                $UrlPhotA_erreur = "Le fichier est trop gros : (<strong>".$_FILES['UrlPhotA']['size']." Octets</strong>    contre <strong>".$maxsize." Octets</strong>)";
+	        }
+	        elseif ($image_sizes[0] > $maxwidth OR $image_sizes[1] > $maxheight)
+	        {
+	                $i++;
+	                $UrlPhotA_erreur = "Image trop large ou trop longue : 
+	                (<strong>".$image_sizes[0]."x".$image_sizes[1]."</strong> contre <strong>".$maxwidth."x".$maxheight."</strong>)";
+	        }
+	        elseif (!in_array($extension_upload,$extensions_valides))
+	        {
+	                $i++;
+	                $UrlPhotA_erreur = "Extension de l'UrlPhotA incorrecte";
+	        }
 
-			if ($result) {
 
-				$tuple = $result->fetch();
-				$NumArt = $tuple["NumArt"];
+	        if ($i != 0) {
 
-				if (is_null($NumArt)) {
-
-					$NumArt = 1;
-
-				} //if (is_null($NumArt))
-				else {
-
-					$NumArt = $tuple["NumArt"];
-					$numSeqArt = (int)$NumArt;
-					$numSeqArt++;
-					$NumArt = $numSeqArt;
+	        	echo $UrlPhotA_erreur;
+	        }
+	        else {
+	        	//D'abord on ajoute le fichiers de notre PHotA
+	        	function move_PhotA($UrlPhotA)
+				{
+				    $extension_upload = strtolower(substr(  strrchr($UrlPhotA['name'], '.')  ,1));
+				    $name = time();
+				    $nomUrlPhotA = str_replace(' ','',$name).".".$extension_upload;
+				    $name = "../../assets/image_article/".str_replace(' ','',$name).".".$extension_upload;
+				    move_uploaded_file($UrlPhotA['tmp_name'],$name);
+				    return $nomUrlPhotA;
 				}
-			} //if ($result)
 
-			$query = $bdPdo->prepare('INSERT INTO ARTICLE (NumArt, DtCreA, LibTitrA, LibChapoA, LibAccrochA, Parag1A, LibSsTitr1, Parag2A, LibSsTitr2, Parag3A, LibConclA, UrlPhotA, Likes, NumAngl, NumThem, NumLang) VALUES (:NumArt, :DtCreA, :LibTitrA, :LibChapoA, :LibAccrochA, :Parag1A, :LibSsTitr1, :Parag2A, :LibSsTitr2, :Parag3A, :LibConclA, :UrlPhotA, :Likes, :NumAngl, :NumThem, :NumLang);');
+				$nomUrlPhotA=(!empty($_FILES['UrlPhotA']['size']))?move_PhotA($_FILES['UrlPhotA']):'';
 
-			$query->execute(
-				array(
-					':NumArt' => $NumArt,		
-					':DtCreA' => $DtCreA,
-					':LibTitrA' => $LibTitrA,
-					':LibChapoA' => $LibChapoA,
-					':LibAccrochA' => $LibAccrochA,
-					':Parag1A' => $Parag1A,
-					':LibSsTitr1' => $LibSsTitr1,
-					':Parag2A' => $Parag2A,
-					':LibSsTitr2' => $LibSsTitr2,
-					':Parag3A' => $Parag3A,
-					':LibConclA' => $LibConclA,
-					':UrlPhotA' => $UrlPhotA,
-					':Likes' => $Likes,
-					':NumAngl' => $NumAngl,
-					':NumThem' => $NumThem,
-					':NumLang' => $NumLang
-				) //array
-			); //$query->execute
+	        	//Puis la requete sql
+				$parmNumArt = "%"; // exemple : '21'
+				$requete = "SELECT MAX(NumArt) AS NumArt FROM ARTICLE WHERE NumArt LIKE '$parmNumArt';";
 
-			$query->closeCursor();
+				$result = $bdPdo->query($requete);
 
-			$query = $bdPdo->prepare('INSERT INTO MOTCLEARTICLE (NumArt, NumMoCle) VALUES (:NumArt, :NumMoCle);');
+				if ($result) {
 
-			$query->execute(
-				array(
-					':NumArt' => $NumArt,
-					':NumMoCle' => $NumMoCle
-				)
-			);
+					$tuple = $result->fetch();
+					$NumArt = $tuple["NumArt"];
 
-			$query->closeCursor();
+					if (is_null($NumArt)) {
 
+						$NumArt = 1;
 
-				//header("Location:Article_read.php");
+					} //if (is_null($NumArt))
+					else {
+
+						$NumArt = $tuple["NumArt"];
+						$numSeqArt = (int)$NumArt;
+						$numSeqArt++;
+						$NumArt = $numSeqArt;
+					}
+				} //if ($result)
+
+				$query = $bdPdo->prepare('INSERT INTO ARTICLE (NumArt, DtCreA, LibTitrA, LibChapoA, LibAccrochA, Parag1A, LibSsTitr1, Parag2A, LibSsTitr2, Parag3A, LibConclA, UrlPhotA, Likes, NumAngl, NumThem, NumLang) VALUES (:NumArt, :DtCreA, :LibTitrA, :LibChapoA, :LibAccrochA, :Parag1A, :LibSsTitr1, :Parag2A, :LibSsTitr2, :Parag3A, :LibConclA, :UrlPhotA, :Likes, :NumAngl, :NumThem, :NumLang);');
+
+				$query->execute(
+					array(
+						':NumArt' => $NumArt,		
+						':DtCreA' => $DtCreA,
+						':LibTitrA' => $LibTitrA,
+						':LibChapoA' => $LibChapoA,
+						':LibAccrochA' => $LibAccrochA,
+						':Parag1A' => $Parag1A,
+						':LibSsTitr1' => $LibSsTitr1,
+						':Parag2A' => $Parag2A,
+						':LibSsTitr2' => $LibSsTitr2,
+						':Parag3A' => $Parag3A,
+						':LibConclA' => $LibConclA,
+						':UrlPhotA' => $nomUrlPhotA,
+						':Likes' => $Likes,
+						':NumAngl' => $NumAngl,
+						':NumThem' => $NumThem,
+						':NumLang' => $NumLang
+					) //array
+				); //$query->execute
+
+				$query->closeCursor();
+
+				$query = $bdPdo->prepare('INSERT INTO MOTCLEARTICLE (NumArt, NumMoCle) VALUES (:NumArt, :NumMoCle);');
+
+				$query->execute(
+					array(
+						':NumArt' => $NumArt,
+						':NumMoCle' => $NumMoCle
+					)
+				);
+
+				$query->closeCursor();
+
+					header("Location:Article_read.php");
+			}
 
 		} //if (((isset($_POST['LibArt'])) AND !empty($_POST['LibArt'])) [...] AND (*Submit == "Valider")))
 		else {
@@ -141,7 +195,7 @@ $NumThem = "";
 $NumLang = "";
 ?>
 
-<form method="POST" action="Article_insert.php">
+<form method="POST" action="Article_insert.php" enctype="multipart/form-data">
 
 <!-- 			<div>
 			<label>DtCreA</label>
@@ -195,8 +249,7 @@ $NumLang = "";
 		</div>	
 
 		<div>
-			<label>UrlPhotA</label>
-			<input type="text" size='62' maxlength="62" name="UrlPhotA" id="UrlPhotA">
+			<label for="UrlPhotA">Choisissez votre photo :</label><input type="file" name="UrlPhotA" id="UrlPhotA" />(Taille max : )
 		</div>
 
 		<div>
