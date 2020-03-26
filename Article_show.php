@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 include './CRUD/includes/ctrlSaisies.php';
 include './CRUD/includes/Connect_PDO.php';
@@ -99,7 +100,9 @@ if (isset($_GET['id']) AND  $_GET['id']) {
 
 		<input class="search" type="input" name="search">
 
-		<a class="user" href="Connexion.php"><img class="user" src="assets/png/user.png" alt="Bouton User"></a>
+		<?php //Le boutton user
+		include './assets/includes/user_link.php';
+		?>
 
 		<!-- <h2> SHOW <?php echo $NumArt ?> </h2> -->
 
@@ -165,30 +168,6 @@ if (isset($_GET['id']) AND  $_GET['id']) {
 			<!-- </acronym> -->
 			 <!-- <acronym title="Likes :"> -->
 			<?php if(isset($_GET['id']))echo $Likes?> J'aimes
-			<!-- </acronym> -->
-		</p>
-
-		<p>
-			 <!-- <acronym title="NumAngl :"> -->
-			<?php if(isset($_GET['id']))echo $NumAngl_get?>
-			<!-- </acronym> -->
-		</p>
-
-		<p>
-			 <!-- <acronym title="NumThem :"> -->
-			<?php if(isset($_GET['id']))echo $NumThem_get?>
-			<!-- </acronym> -->
-		</p>		
-
-		<p>
-			 <!-- <acronym title="NumLang :"> -->
-			<?php if(isset($_GET['id']))echo $NumLang_get?>
-			<!-- </acronym> -->
-		</p>
-
-		<p>
-			 <!-- <acronym title="NumMoCle :"> -->
-			<?php if(isset($_GET['id']))echo $NumMoCle_get?>
 			<!-- </acronym> -->
 		</p>
 	</div>

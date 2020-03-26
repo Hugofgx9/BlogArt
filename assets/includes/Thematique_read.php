@@ -1,8 +1,8 @@
-<?php //liste angles
+<?php //liste langues
 
-		include '../includes/Connect_PDO.php';
+		include './assets/includes/Connect_PDO.php';
 		
-	    $query = "SELECT * FROM ANGLE ORDER BY NumAngl ASC;";
+	    $query = "SELECT * FROM THEMATIQUE ORDER BY NumThem ASC;";
 	    try {
 	      $bdPdo_select = $bdPdo->prepare($query);
 	      $bdPdo_select->execute(); // recup toutes les infos nécéssaires
@@ -20,8 +20,8 @@
 	<table>
 		<thead>
 		  <tr>
-		      <th>NumAngl</th>
-		      <th>LibAngl</th>
+		      <th>NumThem</th>
+		      <th>LibThem</th>
 		      <th>NumLang</th>
 		      <th>Modifier</th>
 		      <th>Supprimer</th>
@@ -34,11 +34,11 @@
 		?>
 
 			<tr>
-			  <td><?php echo $row['NumAngl']; ?></td>
-			  <td><?php echo $row['LibAngl']; ?></td>
+			  <td><?php echo $row['NumThem']; ?></td>
+			  <td><?php echo $row['LibThem']; ?></td>
 			  <td><?php echo $row['NumLang']; ?></td>
-			  <td><a href="Angle_edit.php?id=<?php echo $row['NumAngl'] ?>">Modifier</a></td>
-			  <td><a href="Angle_delete.php?NumAngl=<?php echo $row['NumAngl'] ?>">Supprimer</a></td>
+			  <td><a href="Thematique_edit.php?id=<?php echo $row['NumThem'] ?>">Modifier</a></td>
+			  <td><a href="Thematique_delete.php?NumThem=<?php echo $row['NumThem'] ?>">Supprimer</a></td>
 			</tr>
 
 		<?php
@@ -51,8 +51,8 @@
 	<?php
 	}
 	else {
-	  echo "Il n'y a aucun angle enregistré.";
+	  echo "Il n'y a aucune langue enregistrée.";
 	}
 	?>
 
-	<a href="Angle_insert.php">Créer un nouvel angle</a>
+	<a href="Thematique_insert.php">Créer un nouveau mot-clé</a>
