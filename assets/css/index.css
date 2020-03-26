@@ -9,6 +9,10 @@
 	grid-template-rows: repeat(4, 400px);
 }
 
+#head {
+	grid-template-rows: repeat(1, 0px);	
+}
+
 #last_art {
 	grid-column: 2/12;
 	grid-row: 2;

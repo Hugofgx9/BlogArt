@@ -18,14 +18,15 @@ session_start();
 	<nav><!-- 		<a><img src="assets/png/logo.png"></a> -->
 	</nav>
 
-	<div class="container"> <!-- Corps de la page -->
+	<div class="container" id="head"> <!-- Corps de la page -->
 
 		<a><img class="logo" src="assets/png/logo.png" alt="Logo de l'Avant Première Bordelaise"></a>
 
 		<input class="search" type="input" name="search">
 
 		<a class="user" href="Connexion.php"><img class="user" src="assets/png/user.png" alt="Bouton User"></a>
-
+	</div>
+	<div class="container">
 		<div id="last_art">
 		    <?php //liste les plus populaires
 
