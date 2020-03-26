@@ -9,28 +9,33 @@
 	grid-template-rows: repeat(4, 400px);
 }
 
-#head {
+.head {
+	margin-left: 100px;
+	margin-right: 100px;
+	display: grid;
+	grid-column-gap: 30px;
+	grid-template-columns: repeat(12, 1fr);
 	grid-template-rows: repeat(1, 0px);	
 }
 
 #last_art {
 	grid-column: 2/12;
-	grid-row: 2;
+	grid-row: 1;
 }
 
 #art_popu {
 	grid-column: 2/12;
-	grid-row: 3;
+	grid-row: 2;
 }
 
 #events {
 	grid-column: 2/12;
-	grid-row: 4;
+	grid-row: 3;
 }
 
 #portraits {
 	grid-column: 2/12;
-	grid-row: 5;
+	grid-row: 4;
 }
 
 .trio {

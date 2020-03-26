@@ -18,16 +18,20 @@ session_start();
 	<nav><!-- 		<a><img src="assets/png/logo.png"></a> -->
 	</nav>
 
-	<div class="container" id="head"> <!-- Corps de la page -->
+	<div class="head"> <!-- Corps de la page -->
 
 		<a><img class="logo" src="assets/png/logo.png" alt="Logo de l'Avant Première Bordelaise"></a>
 
 		<input class="search" type="input" name="search">
 
-		<?php //Le boutton user
+		<div class="user"><?php //Le boutton user
 		include './assets/includes/user_link.php';
 		?>
-		
+		</div>
+
+	</div>
+	<div class="container">
+
 		<div id="last_art">
 		    <?php //liste les plus populaires
 
@@ -203,7 +207,7 @@ session_start();
 	</div>
 
 	<footer>
-		
+		<p class="footer">MENTIONS LEGALES</p>
 	</footer>
 
 </body>

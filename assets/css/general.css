@@ -73,6 +73,15 @@ footer {
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;
+
+	font-family: 'Slim Joe';
+	font-size: 25px;
+	text-align: center;
+	color: white;
+}
+
+.footer {
+
 }
 
 input {
