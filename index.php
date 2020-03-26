@@ -24,12 +24,10 @@ session_start();
 
 		<input class="search" type="input" name="search">
 
-		<img class="user" src="assets/png/user.png" alt="Bouton User">
-
 		<?php //Le boutton user
 		include './assets/includes/user_link.php';
 		?>
-
+		
 		<div id="last_art">
 		    <?php //liste les plus populaires
 
