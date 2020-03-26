@@ -32,11 +32,11 @@ if (empty($_POST['Login'])) {// Si on la variable est vide, on peut considérer 
 
 
 
-	echo '<form method="post" action="register.php">
-		<label for="Login">Login :</label>
-			<input name="Login" type="text" id="Login" /> (maximum 30 caractères)<br />
-		<label for="Pass">Mot de Passe :</label>
-			<input type="password" name="Pass" id="Pass" /> (maximum 15 caractères)<br />
+	echo '<form class="formulaire" method="post" action="register.php">
+		<label for="Login">Login : (maximum 30 caractères)</label>
+			<input name="Login" type="text" id="Login" /> <br />
+		<label for="Pass">Mot de Passe : (maximum 15 caractères)</label>
+			<input type="password" name="Pass" id="Pass" /> <br />
 		<label for="confirm">Confirmer le mot de passe :</label>
 			<input type="password" name="confirm" id="confirm" /><br />
 		<label for="LastName">Nom :</label>
@@ -45,7 +45,7 @@ if (empty($_POST['Login'])) {// Si on la variable est vide, on peut considérer 
 			<input type="text" name="FirstName" id="FirstName" /><br />
 		<label for="EMail">Votre adresse Mail :</label>
 			<input type="text" name="EMail" id="EMail" /><br />
-		<p><input type="submit" name="Submit" value="Inscription" /></p>
+		<p><input class="bouton" type="submit" name="Submit" value="Inscription" /></p>
 		<p>Tous les champs sont obligatoires</p>
 		<p>Déjà inscrit ? <a href="./Connexion.php">Connectez-vous</a></p>
 	</form>

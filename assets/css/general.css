@@ -51,6 +51,14 @@ a {
 	grid-column: 1/12;
 	height: 0px;
 }
+a.bouton {
+	font-family: "Slim Joe";
+	font-size: 30px;
+	color: black;
+}
+a.bouton:hover {
+	color : grey;
+}
 
 .logo {
 	 grid-column: 4/9;
@@ -73,39 +81,56 @@ footer {
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;
+}
 
+p.footer {
 	font-family: 'Slim Joe';
 	font-size: 25px;
 	text-align: center;
+	vertical-align: middle;
 	color: white;
 }
 
-.footer {
-
+.formulaire {
+	text-align: center;
 }
 
 input {
 	grid-column: 10/13;
-
 	font-family: 'MADE Canvas Regular';
 	font-size: 20px;
 	padding: 8px;
 	border: 0px;
 }
+
 input.search {
     margin-top: -50px;
     margin-bottom: 50px;	
+}
+
+input.bouton {
+	border-radius: 10px;
+	background-color: #941A2A;
+	font-family: "Big John";
+	color : #F6F7EB;
+	width: auto;
+}
+
+.formulaire input {
+	width: 100%;
+	margin-top: 10px;
+	margin-bottom: 25px;
 }
 
 form {
 	grid-column : 4/10;
 }
 
-p.formulaire label {
+.formulaire label {
 	grid-column: 5/10; 
 	grid-row: 2;
-	text-align: center;
 	font-family: "MADE Canvas Regular";
+	font-size: 30px;
 }
 
 /*TABLEAUX*/

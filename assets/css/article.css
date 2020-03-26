@@ -10,6 +10,7 @@
 
 .container p {
 	grid-column: 2/9;
+	text-align: center;
 }
 
 .container h1 {

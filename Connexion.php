@@ -31,11 +31,11 @@ if (!isset($_POST['Login'])) //On est dans la page de formulaire
 {
 	echo '<form method="post" action="connexion.php">
 	<p class="formulaire">
-	<label for="Login">Login : </label><input name="Login" type="text" id="Login" /><br />
-	<label for="Pass">Mot de Passe : </label><input type="password" name="Pass" id="Pass" />
+	<label for="Login">Login : <br></label><input name="Login" type="text" id="Login" /><br />
+	<label for="Pass">Mot de Passe : <br></label><input type="password" name="Pass" id="Pass" />
 	</p>
-	<p><input type="submit" value="Connexion" /></p></form>
-	<a href="./register.php">Pas encore inscrit ?</a>
+	<p><input class="bouton" type="submit" value="Connexion" /></p></form>
+	<a class="bouton" href="./register.php">Pas encore inscrit ?</a>
 	 
 	</div>
 	</body>

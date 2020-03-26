@@ -51,7 +51,7 @@ session_start();
 
 			    if ($NbreData != 0) {	
 					echo "<div>";
-					echo "<h4>" . $rowAll[0]['LibTitrA'] . "</h4>";
+					echo "<h1>" . $rowAll[0]['LibTitrA'] . "</h1>";
 					echo "<a href='Article_show.php?id=" . $rowAll[0]['NumArt'] ."'><img src='assets/image_article/" .$rowAll[0]['UrlPhotA'] ."'></a>";
 					echo "</div>";
 				}
@@ -108,7 +108,7 @@ session_start();
 					}
 				?>
 			</div>
-			<a href="">Voir tout</a>
+			<a class="bouton" href="">Voir tout</a>
 		</div>
 
 		<div id="events">
@@ -155,7 +155,7 @@ session_start();
 					}
 				?>
 			</div>
-			<a href="">Voir tout</a>
+			<a class="bouton" href="">Voir tout</a>
 		</div>
 
 		<div id="portraits">
@@ -202,7 +202,7 @@ session_start();
 					}
 				?>
 			</div>
-			<a href="">Voir tout</a>
+			<a class="bouton" href="">Voir tout</a>
 		</div>
 	</div>
 

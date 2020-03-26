@@ -48,6 +48,14 @@
 	justify-content: center;
 }
 
+h1 /*TITRES*/{
+	grid-row: 9/12;
+	text-align: center;
+	font-family: 'Big John';
+	font-size: 50px;
+	margin-top: 0px;
+}
+
 h2 {
 	margin-bottom: 70px;
 }
@@ -60,3 +68,6 @@ img {
 	width : 100px;
 }
 
+.last_art {
+	grid-row: 2/8;
+}
