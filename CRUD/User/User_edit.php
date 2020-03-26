@@ -4,8 +4,7 @@ include '../includes/ctrlSaisies.php';
 include '../includes/Connect_PDO.php';
 
 //init les variables
-$LibCom = "";
-$NumArt = "";
+
 
 
 if (isset($_GET['id']) AND  $_GET['id']) {
@@ -74,7 +73,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")  {
 
 			$query->closeCursor();
 
-			header("Location:Comment_read.php");
+			header("Location:User_read.php");
 
 		} //if (((isset($_POST['LibCom'])) AND !empty($_POST['LibCom'])) [...] AND (*Submit == "Valider")))
 		else {
@@ -95,7 +94,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")  {
 <body>
 	<h2> Edit <?php echo $Login; ?> </h2>
 
-	<form method="POST" action="Comment_edit.php">
+	<form method="POST" action="User_edit.php">
 
 			<input type="hidden" id="id" name="id" value="<?php echo $_GET['id'] ?>">
 

@@ -1,6 +1,6 @@
 <?php //liste angles
 
-		include '../includes/Connect_PDO.php';
+		include './assets/includes/Connect_PDO.php';
 		
 	    $query = "SELECT * FROM ANGLE ORDER BY NumAngl ASC;";
 	    try {

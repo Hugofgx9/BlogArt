@@ -140,7 +140,7 @@ if (isset($_GET['id']) AND  $_GET['id']) {
 
 			<p>
 				<strong>UrlPhotA : </strong>
-				<img src="<?php if(isset($_GET['id']))echo $UrlPhotA?>">
+				<img src="../../assets/image_article/<?php if(isset($_GET['id']))echo $UrlPhotA?>">
 			</p>
 
 			<p>

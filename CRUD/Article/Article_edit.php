@@ -57,6 +57,8 @@ if (isset($_GET['id']) AND  $_GET['id']) {
 
 	}
 
+	$query->closeCursor();
+
 	$queryText = 'SELECT * FROM MOTCLEARTICLE WHERE NumArt = :NumArt;';
 	$query = $bdPdo->prepare($queryText);
 	$query->execute(
@@ -64,16 +66,18 @@ if (isset($_GET['id']) AND  $_GET['id']) {
 			':NumArt' => $NumArt
 		)
 	);
+	$NbreData = $query->rowCount(); // nombre d'enregistrements
+    $rowAll = $query->fetchAll();
 
 
 	//si il y a bien un résultat et qu'il ne comporte bien qu'une seule ligne
-	if ($query AND $query->rowCount() == 1) {
+	if ($query AND $NbreData > 0) {
 
-
-		$object = $query->fetchObject();
-		$NumMoCle_get = $object->NumMoCle;
+		$NumMoCle_get = $rowAll[0]['NumMoCle'];
 
 	}
+
+	$query->closeCursor();
 
 }
 

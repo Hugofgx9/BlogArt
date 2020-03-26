@@ -30,7 +30,6 @@
 }
 
 body {
-	background-image: url("../png/background.jpg");
 	margin: 0px;
 	background-color: #F8F8F8;
 	background-attachment:fixed;
@@ -90,11 +89,11 @@ input.search {
 }
 
 form {
-	grid-column : 4/9;
+	grid-column : 4/10;
 }
 
 p.formulaire label {
-	grid-column: 5/9; 
+	grid-column: 5/10; 
 	grid-row: 2;
 	text-align: center;
 	font-family: "MADE Canvas Regular";
