@@ -9,7 +9,7 @@
 }
 
 .container p {
-	grid-column: 2/9;
+	grid-column: 2/12;
 }
 
 .container h1 {
@@ -42,14 +42,9 @@ img {
 	vertical-align: middle;
 }
 
-a {
-	grid-column: 1/12;
-	height: 0px;
-}
-
 /*TEXTE*/
 
-p.date {
+.date {
 	grid-column: 3/11;
 	text-align: center;
 	color: white;
@@ -81,3 +76,51 @@ h4 /*§ + CONCLUSION*/ {
 	margin-top: 0px;
 }
 
+p /*§ + CONCLUSION*/ {
+	font-family: 'MADE Canvas Light';
+	font-size: 22px;
+	margin-top: 0px;
+}
+
+/*TRIO*/
+
+.trio {
+	display: flex;
+	justify-content: space-between;
+}
+
+.trio + a {
+	display: flex;
+	justify-content: center;
+}
+
+div.trio div {
+    text-align: center;
+	border-color: black;
+    border-style: solid;
+    height: 20vw;
+    width: 20vw;
+    overflow: hidden;
+}
+div.trio div h4 {
+	font-family: 'Big John';
+	font-size: 20px;
+	text-align: left;
+	color: white;
+	position: relative;
+	vertical-align: bottom;
+	margin-top: -60px;
+    margin-left: 10px;
+}
+div.trio div a img {
+	max-height: 100%;
+    width: auto;
+    text-align: center;
+}
+div.trio a {
+	filter: brightness(0.80);
+}
+
+#art_last {
+	grid-column: 2/12;
+}

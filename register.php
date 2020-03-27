@@ -32,22 +32,22 @@ if (empty($_POST['Login'])) {// Si on la variable est vide, on peut considérer 
 
 
 
-	echo '<form method="post" action="register.php">
-		<label for="Login">Login :</label>
-			<input name="Login" type="text" id="Login" /> (maximum 30 caractères)<br />
-		<label for="Pass">Mot de Passe :</label>
-			<input type="password" name="Pass" id="Pass" /> (maximum 15 caractères)<br />
-		<label for="confirm">Confirmer le mot de passe :</label>
+	echo '<form id="register" method="post" action="register.php">
+		<label for="Login">Login (max 30 carac.) : </label>
+			<input name="Login" type="text" id="Login" /> <br />
+		<label for="Pass">Mot de Passe (max 15 carac.) : </label>
+			<input type="password" name="Pass" id="Pass" /> <br />
+		<label for="confirm">Confirmer le mot de passe : </label>
 			<input type="password" name="confirm" id="confirm" /><br />
-		<label for="LastName">Nom :</label>
+		<label for="LastName">Nom : </label>
 			<input type="text" name="LastName" id="LastName" /><br />
-		<label for="FirstName">Prénom :</label>
+		<label for="FirstName">Prénom : </label>
 			<input type="text" name="FirstName" id="FirstName" /><br />
-		<label for="EMail">Votre adresse Mail :</label>
+		<label for="EMail">Votre adresse Mail : </label>
 			<input type="text" name="EMail" id="EMail" /><br />
-		<p><input type="submit" name="Submit" value="Inscription" /></p>
 		<p>Tous les champs sont obligatoires</p>
-		<p>Déjà inscrit ? <a href="./Connexion.php">Connectez-vous</a></p>
+		<p><input class="bouton" type="submit" name="Submit" value="Inscription" /></p>
+		<p >Déjà inscrit ? <a class="bouton" href="./Connexion.php">Connectez-vous</a></p>
 	</form>
 	</div>
 	</body>

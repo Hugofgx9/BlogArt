@@ -6,31 +6,39 @@
 	display: grid;
 	grid-column-gap: 30px;
 	grid-template-columns: repeat(12, 1fr);
-	grid-template-rows: repeat(4, 400px);
+	grid-template-rows: repeat(4, 500px);
 }
 
-#head {
+.head {
+	margin-left: 100px;
+	margin-right: 100px;
+	display: grid;
+	grid-column-gap: 30px;
+	grid-template-columns: repeat(12, 1fr);
 	grid-template-rows: repeat(1, 0px);	
 }
 
 #last_art {
 	grid-column: 2/12;
-	grid-row: 2;
+	grid-row: 1;
+}
+#last_art div {
+	display: flex;
 }
 
 #art_popu {
 	grid-column: 2/12;
-	grid-row: 3;
+	grid-row: 2;
 }
 
 #events {
 	grid-column: 2/12;
-	grid-row: 4;
+	grid-row: 3;
 }
 
 #portraits {
 	grid-column: 2/12;
-	grid-row: 5;
+	grid-row: 4;
 }
 
 .trio {
@@ -43,7 +51,45 @@
 	justify-content: center;
 }
 
+div.trio div {
+    text-align: center;
+	border-color: black;
+    border-style: solid;
+    height: 20vw;
+    width: 20vw;
+    overflow: hidden;
+}
+div.trio div h4 {
+	font-family: 'Big John';
+	font-size: 20px;
+	text-align: left;
+	color: white;
+	position: relative;
+	vertical-align: bottom;
+	margin-top: -60px;
+    margin-left: 10px;
+}
+div.trio div a img {
+	max-height: 100%;
+    width: auto;
+    text-align: center;
+}
+div.trio a {
+	filter: brightness(0.80);
+}
+
+h1 /*TITRES*/{
+	grid-row: 9/12;
+	text-align: left;
+	font-family: 'Big John';
+    width: 30%;
+	font-size: 50px;
+	margin-top: 0px;
+}
+
 h2 {
+	font-family: 'Big John';
+	font-size: 50px;
 	margin-bottom: 70px;
 }
 
@@ -59,3 +105,6 @@ h4 {
 	width : 70%;
 }
 
+.last_art {
+	grid-row: 2/8;
+}

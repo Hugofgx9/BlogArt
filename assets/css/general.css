@@ -47,11 +47,6 @@ nav {
 	
 }
 
-a {
-	grid-column: 1/12;
-	height: 0px;
-}
-
 .logo {
 	 position: relative;
 	 width: 500px;
@@ -75,14 +70,46 @@ footer {
 	background-size: cover;
 }
 
+p.footer {
+	font-family: 'Slim Joe';
+	font-size: 25px;
+	text-align: center;
+	vertical-align: middle;
+	color: white;
+}
+
+a {
+	grid-column: 1/12;
+    width: 100%;
+}
+a.bouton {
+	font-family: "Slim Joe";
+	font-size: 20px;
+	color: black;
+}
+a.bouton:hover {
+	color : grey;
+}
+
+input.bouton {
+	border-radius: 10px;
+	background-color: #941A2A;
+	font-family: "Big John";
+	color : #F6F7EB;
+	width: auto;
+}
+input.bouton:hover {
+	cursor: pointer;
+}
+
 input {
 	grid-column: 10/13;
-
 	font-family: 'MADE Canvas Regular';
 	font-size: 20px;
 	padding: 8px;
 	border: 0px;
 }
+
 input.search {
     margin-top: -50px;
     margin-bottom: 50px;	
@@ -92,11 +119,58 @@ form {
 	grid-column : 4/10;
 }
 
-p.formulaire label {
+#connexion {
+
+}
+#connexion input {
+	width: 100%;
+	margin-bottom: 20px;
+}
+#connexion label {
+	font-family: "MADE Canvas Regular";
+	font-size: 25px;
+}
+#connexion p {
+	font-family: "MADE Canvas Regular";
+	text-align: center;
+}
+
+#register {
+	text-align: right;
+}
+#register input {
+	width: 40%;
+    margin-bottom: 20px;
+}
+#register label {
+	font-family: "MADE Canvas Regular";
+	font-size: 25px;
+}
+#register p {
+	font-family: "MADE Canvas Regular";
+	text-align: center;
+}
+
+.formulaire {
+	text-align: center;
+}
+
+.formulaire p {
+	font-family: "MADE Canvas Regular";
+	font-size: 25px;
+}
+
+.formulaire input {
+	width: 100%;
+	margin-top: 10px;
+	margin-bottom: 25px;
+}
+
+.formulaire label {
 	grid-column: 5/10; 
 	grid-row: 2;
-	text-align: center;
 	font-family: "MADE Canvas Regular";
+	font-size: 30px;
 }
 
 /*TABLEAUX*/

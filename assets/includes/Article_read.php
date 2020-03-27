@@ -39,8 +39,8 @@
 				<td><?php echo $row['NumThem']; ?></td>
 				<td><?php echo $row['NumAngl']; ?></td>
 				<td><?php echo $row['NumLang']; ?></td>
-				<td><a href="CRUD/Article/Article_edit.php?id=<?php echo $row['NumArt'] ?>">Modifier</a></td>
-				<td><a href="CRUD/Article/Article_delete.php?NumArt=<?php echo $row['NumArt'] ?>" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet article ?');">Supprimer</a></td>
+				<td><a href="./assets/includes/Article_edit.php?id=<?php echo $row['NumArt'] ?>">Modifier</a></td>
+				<td><a href="./assets/includes/Article_delete.php?NumArt=<?php echo $row['NumArt'] ?>" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet article ?');">Supprimer</a></td>
 			</tr>
 
 		<?php

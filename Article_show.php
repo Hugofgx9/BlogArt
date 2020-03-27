@@ -124,14 +124,14 @@ if (isset($_GET['id']) AND  $_GET['id']) {
 			<!-- </acronym> -->
 		</h2>
 
-		<h4>
+		<p>
 			 <!-- <acronym title="LibAccrochA :"> -->
 			<?php if(isset($_GET['id']))echo $LibAccrochA?>
 			<!-- </acronym> -->
 			 <!-- <acronym title="Parag1A :"> -->
 			<?php if(isset($_GET['id']))echo $Parag1A?>
 			<!-- </acronym> -->
-		</h4>
+		</p>
 
 		<h3>
 			 <!-- <acronym title="LibSsTitr1 :"> -->
@@ -139,11 +139,11 @@ if (isset($_GET['id']) AND  $_GET['id']) {
 			<!-- </acronym> -->
 		</h3>
 
-		<h4>
+		<p>
 			 <!-- <acronym title="Parag2A :"> -->
 			<?php if(isset($_GET['id']))echo $Parag2A?>
 			<!-- </acronym> -->
-		</h4>
+		</p>
 
 		<h3>
 			 <!-- <acronym title="LibSsTitr2 :"> -->
@@ -151,26 +151,71 @@ if (isset($_GET['id']) AND  $_GET['id']) {
 			<!-- </acronym> -->
 		</h3>
 
-		<h4>
+		<p>
 			 <!-- <acronym title="Parag3A :"> -->
 			<?php if(isset($_GET['id']))echo $Parag3A?>
 			<!-- </acronym> -->
-		</h4>
+		</p>
 
-		<h4>
+		<p>
 			 <!-- <acronym title="LibConclA :"> -->
 			<?php if(isset($_GET['id']))echo $LibConclA?>
 			<!-- </acronym> -->
-		</p>	
+		</ps>	
 
 		<p  class="nbLike">
-			<!-- <acronym <img src="<?php if(isset($_GET['id']))echo $UrlPhotA?>"> -->
 			<img src="assets/png/unlike.png" class="like" alt="Like">
-			<!-- </acronym> -->
-			 <!-- <acronym title="Likes :"> -->
-			<?php if(isset($_GET['id']))echo $Likes?> J'aimes
-			<!-- </acronym> -->
 		</p>
+
+		<div id="art_last"> 
+			<h2>Les derniers articles :</h2>
+			<div class="trio">
+				<?php //liste les plus populaires
+
+					include './CRUD/includes/Connect_PDO.php';
+					
+				    $query = "SELECT * FROM ARTICLE ORDER BY NumArt DESC;";
+				    try {
+				      $bdPdo_select = $bdPdo->prepare($query);
+				      $bdPdo_select->execute(); // recup toutes les infos nécéssaires
+				      $NbreData = $bdPdo_select->rowCount(); // nombre d'enregistrements
+				      $rowAll = $bdPdo_select->fetchAll();
+				    }
+				    catch (PDOException $e) {
+				      echo 'Erreur SQL : '. $e->getMessage().'<br/>';
+				      die();
+				    }
+
+				    if ($NbreData > 2) {
+
+						for ($i = 0; $i <= 2; $i++) {
+							echo "<div>";
+							// echo "<a href='Article_show.php?id=" . $rowAll[$i]['NumArt'] ."'><img src='assets/image_article/" .$rowAll[$i]['UrlPhotA'] ."'></a>";
+							echo "<a href='Article_show.php?id=" . $rowAll[$i]['NumArt'] ."'><img src='assets/image_article/" . $rowAll[$i]['UrlPhotA'] . "'></a>";
+							echo "<h4>" . $rowAll[$i]['LibTitrA'] . "</h4>";
+							echo "</div>";
+
+						}
+					}
+
+					elseif ($NbreData != 0) {
+
+						foreach ($rowAll as $row) {
+							echo "<div>";
+							// echo "<a href='Article_show.php?id=" . $row['NumArt'] ."'><img src='assets/image_article/" .$row['UrlPhotA'] ."'></a>";
+							echo "<a href='Article_show.php?id=" . $row['NumArt'] ."'><img src='assets/image_article/" . $row['UrlPhotA'] . "'></a>";
+							echo "<h4>" . $row['LibTitrA'] . "</h4>";
+							echo "</div>";
+						}
+					}
+
+					else {
+					  echo "Il n'y a aucun Article enregistré.";
+					}
+				?>
+			</div>
+			<a class="bouton" href="">Voir tout</a>
+		</div>
 	</div>
 
 	<footer>	

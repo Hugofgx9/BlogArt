@@ -55,7 +55,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")  {
 	        //On définit les variables :
 	        $i = 0;
 	        $UrlPhotA_erreur="";
-	        $maxsize = 100240000; //Poid de l'image
+	        $maxsize = 10000000; //Poid de l'image
 	        $maxwidth = 1000000; //Largeur de l'image
 	        $maxheight = 1000000; //Longueur de l'image
 	        $extensions_valides = array( 'jpg' , 'jpeg' , 'gif' , 'png', 'bmp' ); //Liste des extensions valides
