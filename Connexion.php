@@ -29,13 +29,14 @@ include './CRUD/includes/ctrlSaisies.php';
 <?php
 if (!isset($_POST['Login'])) //On est dans la page de formulaire
 {
-	echo '<form method="post" action="connexion.php">
-	<p class="formulaire">
+	echo '<form id="connexion" method="post" action="connexion.php">
+	<p>
 	<label for="Login">Login : <br></label><input name="Login" type="text" id="Login" /><br />
 	<label for="Pass">Mot de Passe : <br></label><input type="password" name="Pass" id="Pass" />
 	</p>
-	<p><input class="bouton" type="submit" value="Connexion" /></p></form>
-	<a class="bouton" href="./register.php">Pas encore inscrit ?</a>
+	<p><input class="bouton" type="submit" value="Connexion" /></p>
+	<p><a class="bouton" href="./register.php">Pas encore inscrit ?</a></p>
+	</form>
 	 
 	</div>
 	</body>

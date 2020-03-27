@@ -6,7 +6,7 @@
 	display: grid;
 	grid-column-gap: 30px;
 	grid-template-columns: repeat(12, 1fr);
-	grid-template-rows: repeat(4, 400px);
+	grid-template-rows: repeat(4, 500px);
 }
 
 .head {
@@ -21,6 +21,9 @@
 #last_art {
 	grid-column: 2/12;
 	grid-row: 1;
+}
+#last_art div {
+	display: flex;
 }
 
 #art_popu {
@@ -48,15 +51,44 @@
 	justify-content: center;
 }
 
+div.trio div {
+    text-align: center;
+	border-color: black;
+    border-style: solid;
+    height: 300px;
+    width: 300px;
+}
+div.trio div h4 {
+	font-family: 'Big John';
+	font-size: 20px;
+	text-align: left;
+	color: white;
+	position: relative;
+	vertical-align: bottom;
+	margin-top: -60px;
+    margin-left: 10px;
+}
+div.trio div a img {
+	max-height: 100%;
+    width: auto;
+    text-align: center;
+}
+div.trio a {
+	filter: brightness(0.80);
+}
+
 h1 /*TITRES*/{
 	grid-row: 9/12;
-	text-align: center;
+	text-align: left;
 	font-family: 'Big John';
+    width: 30%;
 	font-size: 50px;
 	margin-top: 0px;
 }
 
 h2 {
+	font-family: 'Big John';
+	font-size: 50px;
 	margin-bottom: 70px;
 }
 
@@ -65,7 +97,7 @@ h4 {
 }
 
 img {
-	width : 100px;
+	width: 100%;
 }
 
 .last_art {

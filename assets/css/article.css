@@ -43,11 +43,6 @@ img {
 	vertical-align: middle;
 }
 
-a {
-	grid-column: 1/12;
-	height: 0px;
-}
-
 /*TEXTE*/
 
 p.date {

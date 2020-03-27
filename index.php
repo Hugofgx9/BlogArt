@@ -51,8 +51,9 @@ session_start();
 
 			    if ($NbreData != 0) {	
 					echo "<div>";
+					// echo "<a href='Article_show.php?id=" . $rowAll[0]['NumArt'] ."'><img src='assets/image_article/" .$rowAll[0]['UrlPhotA'] ."'></a>";
+					echo "<a href='Article_show.php?id=" . $rowAll[0]['NumArt'] ."'><img src='assets/image_article/art1.jpg'></a>";
 					echo "<h1>" . $rowAll[0]['LibTitrA'] . "</h1>";
-					echo "<a href='Article_show.php?id=" . $rowAll[0]['NumArt'] ."'><img src='assets/image_article/" .$rowAll[0]['UrlPhotA'] ."'></a>";
 					echo "</div>";
 				}
 
@@ -86,8 +87,9 @@ session_start();
 
 						for ($i = 0; $i <= 2; $i++) {
 							echo "<div>";
+							// echo "<a href='Article_show.php?id=" . $rowAll[$i]['NumArt'] ."'><img src='assets/image_article/" .$rowAll[$i]['UrlPhotA'] ."'></a>";
+							echo "<a href='Article_show.php?id=" . $rowAll[$i]['NumArt'] ."'><img src='assets/image_article/art1.jpg'></a>";
 							echo "<h4>" . $rowAll[$i]['LibTitrA'] . "</h4>";
-							echo "<a href='Article_show.php?id=" . $rowAll[$i]['NumArt'] ."'><img src='assets/image_article/" .$rowAll[$i]['UrlPhotA'] ."'></a>";
 							echo "</div>";
 
 						}
@@ -97,8 +99,9 @@ session_start();
 
 						foreach ($rowAll as $row) {
 							echo "<div>";
+							// echo "<a href='Article_show.php?id=" . $row['NumArt'] ."'><img src='assets/image_article/" .$row['UrlPhotA'] ."'></a>";
+							echo "<a href='Article_show.php?id=" . $row['NumArt'] ."'><img src='assets/image_article/art1.jpg'></a>";
 							echo "<h4>" . $row['LibTitrA'] . "</h4>";
-							echo "<a href='Article_show.php?id=" . $row['NumArt'] ."'><img src='assets/image_article/" .$row['UrlPhotA'] ."'></a>";
 							echo "</div>";
 						}
 					}
@@ -134,8 +137,8 @@ session_start();
 
 						for ($i = 0; $i <= 2; $i++) {
 							echo "<div>";
-							echo "<h4>" . $rowAll[$i]['LibTitrA'] . "</h4>";
 							echo "<a href='Article_show.php?id=" . $rowAll[$i]['NumArt'] ."'><img src='assets/image_article/" .$rowAll[$i]['UrlPhotA'] ."'></a>";
+							echo "<h4>" . $rowAll[$i]['LibTitrA'] . "</h4>";
 							echo "</div>";
 						}
 					}
@@ -144,8 +147,8 @@ session_start();
 
 						foreach ($rowAll as $row) {
 							echo "<div>";
-							echo "<h4>" . $row['LibTitrA'] . "</h4>";
 							echo "<a href='Article_show.php?id=" . $row['NumArt'] ."'><img src='assets/image_article/" .$row['UrlPhotA'] ."'></a>";
+							echo "<h4>" . $row['LibTitrA'] . "</h4>";
 							echo "</div>";
 						}
 					}
@@ -181,8 +184,8 @@ session_start();
 
 						for ($i = 0; $i <= 2; $i++) {
 							echo "<div>";
-							echo "<h4>" . $rowAll[$i]['LibTitrA'] . "</h4>";
-							echo "<a href='Article_show.php?id=" . $rowAll[$i]['NumArt'] ."'><img src='assets/image_article/" .$rowAll[$i]['UrlPhotA'] ."'></a>";					
+							echo "<a href='Article_show.php?id=" . $rowAll[$i]['NumArt'] ."'><img src='assets/image_article/" .$rowAll[$i]['UrlPhotA'] ."'></a>";
+							echo "<h4>" . $rowAll[$i]['LibTitrA'] . "</h4>";					
 							echo "</div>";
 						}
 					}
@@ -191,8 +194,8 @@ session_start();
 
 						foreach ($rowAll as $row) {
 							echo "<div>";
-							echo "<h4>" . $row['LibTitrA'] . "</h4>";
 							echo "<a href='Article_show.php?id=" . $row['NumArt'] ."'><img src='assets/image_article/" .$row['UrlPhotA'] ."'></a>";
+							echo "<h4>" . $row['LibTitrA'] . "</h4>";
 							echo "</div>";
 						}
 					}
