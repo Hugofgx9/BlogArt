@@ -8,3 +8,14 @@ Article :
 SELECTED
 selectbox article get NumMoCle pb
 
+
+
+edit et delete de chaque truc dans le back office
+
+
+supprimer les images lors de la suppression avec unlink
+page user
+commentaires --> connexion 
+likes
+afficher les libellé plutot que les clés dans le back ends
+

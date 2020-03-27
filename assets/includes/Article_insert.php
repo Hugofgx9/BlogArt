@@ -204,47 +204,47 @@ $NumLang = "";
 		</div> -->
 
 		<div>
-			<label>LibTitrA</label>
+			<label>Titre :</label>
 			<input type="text" size='20' name="LibTitrA" id="LibTitrA">
 		</div>
 
 		<div>
-			<label>LibChapoA</label>
+			<label>Chapeau :</label>
 			<input type="text" size='60' name="LibChapoA" id="LibChapoA">
 		</div>
 
 		<div>
-			<label>LibAccrochA</label>
+			<label>Accroche :</label>
 			<input type="text" size='60' name="LibAccrochA" id="LibAccrochA">
 		</div>			
 
 		<div>
-			<label>Parag1A</label>
+			<label>Paragraphe 1 :</label>
 			<input type="text" name="Parag1A" id="Parag1A">
 		</div>
 
 		<div>
-			<label>LibSsTitr1</label>
+			<label>Sous-titre 1 :</label>
 			<input type="text" size='60' name="LibSsTitr1" id="LibSsTitr1">
 		</div>	
 
 		<div>
-			<label>Parag2A</label>
+			<label>Paragraphe 2 :</label>
 			<input type="text" size='60' name="Parag2A" id="Parag2A">
 		</div>
 
 		<div>
-			<label>LibSsTitr2</label>
+			<label>Sous-titre 2 :</label>
 			<input type="text" size='60' name="LibSsTitr2" id="LibSsTitr2">
 		</div>
 
 		<div>
-			<label>Parag3A</label>
+			<label>Paragraphe 3 :</label>
 			<input type="text" size='60' name="Parag3A" id="Parag3A">
 		</div>
 
 		<div>
-			<label>LibConclA</label>
+			<label>Conclusion :</label>
 			<input type="text" size='60' name="LibConclA" id="LibConclA">
 		</div>	
 

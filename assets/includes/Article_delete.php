@@ -1,6 +1,6 @@
 <?php
 
-include '../includes/Connect_PDO.php';
+include 'Connect_PDO.php';
 
 $NumArt = $_GET['NumArt'];
 
@@ -25,7 +25,7 @@ try {
 		$bdPdo->commit();
 	}
 
-	catch (PDOExeception $e) {
+catch (PDOExeception $e) {
 		$bdPDO->rollBack();
 	}
 
