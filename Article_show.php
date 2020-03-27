@@ -92,17 +92,18 @@ if (isset($_GET['id']) AND  $_GET['id']) {
 <body>
 
 	<nav>
-	</nav>
-
-	<div class=container>
-
-		<a href="index.php"><img class="logo" src="assets/png/logo.png" alt="Logo de l'Avant Première Bordelaise"></a>
-
-		<input class="search" type="input" name="search">
 
 		<?php //Le boutton user
 		include './assets/includes/user_link.php';
 		?>
+
+		<a href="index.php"><img class="logo" src="assets/png/logo.png" alt="Logo de l'Avant Première Bordelaise"></a>
+
+	</nav>
+
+	<div class=container>
+
+		<input class="search" type="input" name="search">
 
 		<!-- <h2> SHOW <?php echo $NumArt ?> </h2> -->
 

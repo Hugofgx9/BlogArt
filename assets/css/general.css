@@ -53,18 +53,18 @@ a {
 }
 
 .logo {
-	 grid-column: 4/9;
 	 position: relative;
 	 width: 500px;
-	 margin-top: -200px;
-	 margin-bottom: 25px;
-	 margin-left: 27vw;
+    margin: 0;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translate(-50%, -100%);
+    margin-top: -530px;
 }
 
 .user {
-	width: 100%;
-	grid-column: 2;
-    margin-top: -55px;
+	width: 70px;	
 }
 
 footer {

@@ -10,6 +10,11 @@
 <body>
 
 	<nav>
+
+		<?php //Le boutton user
+		include './assets/includes/user_link.php';
+		?>
+		
 	</nav>
 
 	<div class=container>

@@ -51,7 +51,11 @@ h4 {
 	z-index:10;
 }
 
-img {
+.trio img {
 	width : 100px;
+}
+
+#last_art img {
+	width : 70%;
 }
 

@@ -2,7 +2,7 @@
 if ( !empty( $_SESSION['admin'])) {
 	if ($_SESSION['admin'] == 0){
 
-		echo '<a class="user" href="Connexion.php"><img class="user" src="assets/png/user.png" alt="Bouton User"></a>';
+		echo '<a class="user" href="user_page.php"><img class="user" src="assets/png/user.png" alt="Bouton User"></a>';
 
 	}
 
@@ -14,7 +14,7 @@ if ( !empty( $_SESSION['admin'])) {
 }
 else {
 
-	echo '<a class="user" href="Connexion.php"><img class="user" src="assets/png/user.png" alt="Bouton User"></a>';
+	echo '<a class="user" href="connexion.php"><img class="user" src="assets/png/user.png" alt="Bouton User"></a>';
 
 }
 ?>
