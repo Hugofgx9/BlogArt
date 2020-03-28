@@ -29,6 +29,7 @@
     src: local('MADE Canvas Black'), url('MADE Canvas Black PERSONAL USE.woff') format('woff');
 }
 
+
 body {
 	margin: 0px;
 	background-color: #F8F8F8;
@@ -48,8 +49,8 @@ nav {
 }
 
 .logo {
-	 position: relative;
-	 width: 500px;
+	position: relative;
+	width: 500px;
     margin: 0;
     position: absolute;
     top: 100%;
@@ -96,19 +97,27 @@ input.bouton {
 	background-color: #941A2A;
 	font-family: "Big John";
 	color : #F6F7EB;
-	width: auto;
 }
 input.bouton:hover {
 	cursor: pointer;
 }
 
-input {
+input, textarea{
 	grid-column: 10/13;
 	font-family: 'MADE Canvas Regular';
 	font-size: 20px;
 	padding: 8px;
 	border: 0px;
 }
+
+textarea{ 
+     width: 100%;
+     -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+     -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+     box-sizing: border-box;         /* Opera/IE 8+ */
+}
+
+
 
 input.search {
     margin-top: -50px;

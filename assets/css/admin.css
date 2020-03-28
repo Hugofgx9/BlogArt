@@ -57,11 +57,49 @@ li {
 	justify-content: center;
 }
 
-ul li:first-child{
+ul li:nth-child(-n + 2){
 	border-style: none;
 }
 
 table {
 	width: 100%;
+}
+
+.categories li a {
+	color: white;
+	text-decoration: none;
+	font-family: "Slim Joe";
+	font-size: 18px;
+	text-align: center;
+	margin-bottom: 70px;
+
+}
+
+form div {
+	padding-top: 25px;
+}
+
+input, textarea{
+	font-family: 'MADE Canvas Regular';
+	font-size: 15px;
+	padding: 8px;
+	border: 0px;
+    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+    box-sizing: border-box;
+    width:100%;
+
+}
+
+textarea{ 
+     width: 100%;
+     -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+     -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+     box-sizing: border-box;         /* Opera/IE 8+ */
+}
+
+input.bouton {
+	padding-right: 30px;
+	padding-left: 30px;
 }
 

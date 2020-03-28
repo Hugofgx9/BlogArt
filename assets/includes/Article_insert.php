@@ -210,17 +210,17 @@ $NumLang = "";
 
 		<div>
 			<label>Chapeau :</label>
-			<input type="text" size='60' name="LibChapoA" id="LibChapoA">
+			<textarea type="text" rows="4" name="LibChapoA" id="LibChapoA"></textarea>
 		</div>
 
 		<div>
 			<label>Accroche :</label>
-			<input type="text" size='60' name="LibAccrochA" id="LibAccrochA">
+			<textarea type="text" rows="4" name="LibAccrochA" id="LibAccrochA"></textarea>
 		</div>			
 
 		<div>
 			<label>Paragraphe 1 :</label>
-			<input type="text" name="Parag1A" id="Parag1A">
+			<textarea type="text" rows="10" name="Parag1A" id="Parag1A"></textarea>
 		</div>
 
 		<div>
@@ -230,7 +230,7 @@ $NumLang = "";
 
 		<div>
 			<label>Paragraphe 2 :</label>
-			<input type="text" size='60' name="Parag2A" id="Parag2A">
+			<textarea type="text" rows="10" name="Parag2A" id="Parag2A"></textarea>
 		</div>
 
 		<div>
@@ -240,12 +240,12 @@ $NumLang = "";
 
 		<div>
 			<label>Paragraphe 3 :</label>
-			<input type="text" size='60' name="Parag3A" id="Parag3A">
+			<textarea type="text" rows="10" name="Parag3A" id="Parag3A"></textarea>
 		</div>
 
 		<div>
 			<label>Conclusion :</label>
-			<input type="text" size='60' name="LibConclA" id="LibConclA">
+			<textarea type="text" rows='6' name="LibConclA" id="LibConclA"></textarea>
 		</div>	
 
 		<div>
@@ -269,7 +269,7 @@ $NumLang = "";
 		</div>	 -->
 
 	    <!-- Listbox Angle -->
-        <div>
+        <div class="customselect">
 	        <label for="LibTypAngl">	     
 	                Angle :
 	        </label>
@@ -307,7 +307,7 @@ $NumLang = "";
 
 
 	    <!-- Listbox Theme -->
-        <div>
+        <div class="customselect">
 	        <label for="LibTypThem">	     
 	                Thématique :
 	        </label>
@@ -345,7 +345,7 @@ $NumLang = "";
 
 
 	    <!-- Listbox Theme -->
-        <div>
+        <div class="customselect">
 	        <label for="LibTypLang">	     
 	                Langue :
 	        </label>
@@ -383,7 +383,7 @@ $NumLang = "";
 
 
 	    <!-- Listbox MoCle1 -->
-        <div>
+        <div class="customselect">
 	        <label for="LibTypMoCle1">	     
 	                Mot Clé :
 	        </label>
@@ -421,7 +421,7 @@ $NumLang = "";
 
 
 		<div>
-			<input type="submit" name="Submit" value="Valider">
+			<input class="bouton" type="submit" name="Submit" value="Valider">
 		</div>
 </form>
 
