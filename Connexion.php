@@ -59,7 +59,7 @@ else
     else //On check le mot de passe
     {
         $query = $bdPdo->prepare('SELECT Login, Pass, LastName, FirstName, EMail, admin
-        FROM USER WHERE Login = :Login');
+        FROM user WHERE Login = :Login');
         $query->bindValue(':Login',$_POST['Login'], PDO::PARAM_STR);
         $query->execute();
         $data=$query->fetch();
@@ -68,10 +68,10 @@ else
 	    $_SESSION['Login'] = $data['Login'];
 	    $_SESSION['admin'] = $data['admin'];
 	    $_SESSION['EMail'] = $data['EMail'];
-	    $message = '<p>Bienvenue '.$data['Login'].', 
+	    $message = '<p>Bienvenue '.$data['Login'].',
 			vous êtes maintenant connecté!</p>
-			<p>Cliquez <a href="./index.php">ici</a> 
-			pour revenir à la page d accueil</p>';  
+			<p>Cliquez <a href="./index.php">ici</a>
+			pour revenir à la page d accueil</p>';
 	}
 	else // Acces pas OK !
 	{

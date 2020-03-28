@@ -81,7 +81,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")  {
 			$admin = 0;
 		    $confirm = $_POST['confirm'];
 
-		    $query = "SELECT * FROM USER WHERE Login = :Login";
+		    $query = "SELECT * FROM user WHERE Login = :Login";
 
 		    try {
 		      $bdPdo_select = $bdPdo->prepare($query);
@@ -127,7 +127,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")  {
 	}
 	if ($i == 0) {
 
-		$query = $bdPdo->prepare('INSERT INTO USER (admin, Login, Pass, LastName, EMail, FirstName) VALUES (:admin, :Login, :Pass, :LastName, :EMail, :FirstName);');
+		$query = $bdPdo->prepare('INSERT INTO user (admin, Login, Pass, LastName, EMail, FirstName) VALUES (:admin, :Login, :Pass, :LastName, :EMail, :FirstName);');
 
 		$query->execute(
 			array(
