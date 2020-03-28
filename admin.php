@@ -2,7 +2,7 @@
 session_start();
 
 
-if ($_SESSION['admin'] == 1){
+if (!empty($_SESSION['admin']) AND $_SESSION['admin'] == 1){
 	echo '<!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -15,15 +15,17 @@ if ($_SESSION['admin'] == 1){
 <body>
 
 	<nav>
+	<a><img class="logo" src="assets/png/logo.png" alt="Logo du site"></a>
 	</nav>
 
 	<ul class="container">
 		<div class="categories">
-			<li><button id="togg1">Créer un article</button></li>
-			<li><button id="togg2">Gérer ses articles</button></li>
-			<li><button id="togg3">Gérer ses thématiques</button></li>
-			<li><button id="togg4">Gérer ses angles</button></li>
-			<li><button id="togg5">Gérer ses utilisateurs</button></li>
+			<li><a href="index.php">Revenir au site</a></li>
+			<li><button id="togg1">Creer un article</button></li>
+			<li><button id="togg2">Gerer ses articles</button></li>
+			<li><button id="togg3">Gerer ses thematiques</button></li>
+			<li><button id="togg4">Gerer ses angles</button></li>
+			<li><button id="togg5">Gerer ses utilisateurs</button></li>
 		</div>';
 
 

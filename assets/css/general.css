@@ -8,7 +8,7 @@
     font-family: 'Slim Joe';
     font-style: normal;
     font-weight: normal;
-    src: local('Slim Joe Regular'), url('Slim Joe.woff') format('woff');
+    src: local('Slim Joe Regular'), url('Slim-Joe.woff') format('woff');
 }
 @font-face {
     font-family: 'MADE Canvas Regular';
@@ -37,13 +37,13 @@ body {
 }
 
 nav {
-	height: 5vw;
+	height: 10vw;
 	background-image: url("../png/fond_nav.png");
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;
 	margin-top: 0px;
-	margin-bottom: 100px;
+	margin-bottom: 0px;
 	
 }
 
@@ -116,7 +116,7 @@ input.search {
 }
 
 form {
-	grid-column : 4/10;
+	grid-column : 3/11;
 }
 
 #connexion {

@@ -1,20 +1,67 @@
 .container {
 	display: grid;
-	grid-template-columns: repeat(12, 1fr);
+	margin: 0;
+	padding: 0;
+	grid-template-columns:repeat(12, 1fr);
 }
 
-.bouton{
-	grid-column: 1/4
+li button{
+	font-family: "Slim Joe";
+	color: white;
+	background-color: rgba(0,0,0,0);
+	font-size: 12px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	padding : 10px 20px;
+	border-color: rgba(0,0,0,0);
+	border-width: 0,5px;
+	width: auto;
+}
+
+li button:focus{
+	border-color: rgba(255,255,255,1);
+	outline:0;
+}
+
+.categories {
+	grid-column: 1/4;
+	background-color: #442529;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	height: 80vh;
 }
 
 
 #d1, #d2, #d3, #d4, #d5{
 	display:none;
 	overflow-x: scroll;
-	height: 60vh;
-	grid-column: 4/12;
+	margin-top: 100px;
+	height: 50vh;
+	grid-column: 5/12;
 }
 
 #d1{
 	display: grid;
 }
+
+li {
+	list-style: none;
+	border-top-color: white;
+	border-top-style: solid;
+	border-top-width: 1px;
+	width: 210px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+ul li:first-child{
+	border-style: none;
+}
+
+table {
+	width: 100%;
+}
+
