@@ -13,8 +13,6 @@
 
 	<div class=container>
 
-		<a href="index.php"><img class="logo" src="assets/png/logo.png" alt="Logo de l'Avant Première Bordelaise"></a>
-
 <?php
 session_start();
 session_destroy();

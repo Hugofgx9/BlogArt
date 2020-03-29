@@ -100,19 +100,16 @@ if (isset($_GET['id']) AND  $_GET['id']) {
 
 	<div class="head"> <!-- Corps de la page -->
 
-<!-- 		<input class="search" type="input" name="search"> -->
 
-		<div class="user">
-			<?php //Le boutton user
-				include './assets/includes/user_link.php';
-			?>
+		<input class="search" type="input" name="search">
+
+		<div class="user"><?php //Le boutton user
+		include './assets/includes/user_link.php';
+		?>
 		</div>
 
 	</div>
-
 	<div class=container>
-
-		<input class="search" type="input" name="search">
 
 		<!-- <h2> SHOW <?php echo $NumArt ?> </h2> -->
 
@@ -371,7 +368,7 @@ if (isset($_GET['id']) AND  $_GET['id']) {
 	</div>
 
 	<footer>
-		<p class="footer">MENTIONS LEGALES</p>	
+		<p class="footer">MENTIONS LEGALES</p>
 	</footer>
 
 </body>

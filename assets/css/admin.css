@@ -37,13 +37,14 @@ li button:focus{
 #d1, #d2, #d3, #d4, #d5{
 	display:none;
 	overflow-x: scroll;
-	margin-top: 100px;
-	height: 50vh;
+	height: 80vh;
 	grid-column: 5/12;
+	overflow-x: hidden;
 }
 
 #d1{
 	display: grid;
+	grid-column: 5/13
 }
 
 li {
@@ -82,6 +83,10 @@ table {
 	text-align: center;
 }
 
+form {
+	margin-top: 100px;
+}
+
 form div {
 	padding-top: 25px;
 }
@@ -100,8 +105,12 @@ input[type='text'], textarea{
 input.bouton {
 	padding-right: 30px;
 	padding-left: 30px;
+<<<<<<< HEAD
 	width: 30vw;
 	margin-right: 10vw;
 	margin-left: 10vw;
+=======
+	margin-bottom: 15px;
+>>>>>>> 2e9938d6854054a506bfc441f1dec93a6869a9aa
 }
 

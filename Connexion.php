@@ -18,12 +18,9 @@ include './CRUD/includes/ctrlSaisies.php';
 <body>
 
 	<nav>
-		
 	</nav>
 
-	<div class=container>
-
-		<a href="index.php"><img class="logo" src="assets/png/logo.png" alt="Logo de l'Avant Première Bordelaise"></a>
+	<div id="connexion" class=container>
 
 		<h1>Connexion</h1>
 
@@ -48,7 +45,7 @@ else
     $message='';
     if (empty($_POST['Login']) || empty($_POST['Pass']) ) //Oublie d'un champ
     {
-        $message = '<p>une erreur s\'est produite pendant votre identification.
+        $message = '<p>Une erreur s\'est produite pendant votre identification.
 	Vous devez remplir tous les champs</p>
 	<p>Cliquez <a href="./connexion.php">ici</a> pour revenir</p>';
     }
@@ -89,9 +86,12 @@ else
 	<footer>
 		<p class="footer">MENTIONS LEGALES</p>
 	</footer>
+<<<<<<< HEAD
 
 
 
+=======
+>>>>>>> 2e9938d6854054a506bfc441f1dec93a6869a9aa
 
 </body>
 </html>
