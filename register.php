@@ -19,11 +19,12 @@ include ("CRUD/includes/ctrlSaisies.php");
 <body>
 
 	<nav>
-	</nav>
-
-	<div class=container>
 
 		<a href="index.php"><img class="logo" src="assets/png/logo.png" alt="Logo de l'Avant Première Bordelaise"></a>
+
+	</nav>
+
+	<div id="register" class=container>
 
 <h1>Inscription</h1>
 
@@ -33,7 +34,7 @@ if (empty($_POST['Login'])) {// Si on la variable est vide, on peut considérer 
 
 
 	echo '<form id="register" method="post" action="register.php">
-		<label for="Login">Login (max 30 carac.) : </label>
+		<label for="Login">Identifiant (max 30 carac.) : </label>
 			<input name="Login" type="text" id="Login" /> <br />
 		<label for="Pass">Mot de Passe (max 15 carac.) : </label>
 			<input type="password" name="Pass" id="Pass" /> <br />
@@ -102,7 +103,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")  {
 		    	$i++;
 			}
 			elseif ($Login > 30){
-				$error_msg = "Le Login est trop grand";
+				$error_msg = "L'identifiant est trop grand";
 				$i++;
 
 			}

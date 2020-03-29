@@ -190,7 +190,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")  {
 <body>
 	<h2> Edit <?php $NumArt ?> </h2>
 
-	<form method="POST" action="Article_edit.php">
+	<form class='formulaire' method="POST" action="Article_edit.php">
 
 			<input type="hidden" id="id" name="id" value="<?php echo $_GET['id'] ?>">
 

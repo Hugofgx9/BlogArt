@@ -11,6 +11,8 @@
 
 	<nav>
 
+		<a href="index.php"><img class="logo" src="assets/png/logo.png" alt="Logo de l'Avant Première Bordelaise"></a>
+
 		<?php //Le boutton user
 		include './assets/includes/user_link.php';
 		?>
@@ -18,8 +20,6 @@
 	</nav>
 
 	<div class=container>
-
-		<a href="index.php"><img class="logo" src="assets/png/logo.png" alt="Logo de l'Avant Première Bordelaise"></a>
 
 <?php
 session_start();

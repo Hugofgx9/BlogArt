@@ -135,8 +135,9 @@ form {
 	grid-column : 3/11;
 }
 
-#connexion {
-
+div#connexion {
+	height: 65vh;
+	padding-top: 15vh;
 }
 #connexion input {
 	width: 100%;
@@ -149,6 +150,10 @@ form {
 #connexion p {
 	font-family: "MADE Canvas Regular";
 	text-align: center;
+}
+
+div#register {
+	padding-top: 15vh;
 }
 
 #register {
