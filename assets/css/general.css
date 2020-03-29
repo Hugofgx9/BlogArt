@@ -38,25 +38,31 @@ body {
 }
 
 nav {
-	height: 10vw;
+	height: 10vh;
 	background-image: url("../png/fond_nav.png");
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;
 	margin-top: 0px;
-	margin-bottom: 0px;
 	
 }
 
 .logo {
 	position: relative;
-	width: 500px;
+    width: 500px;
     margin: 0;
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    transform: translate(-50%, -100%);
-    margin-top: -530px;
+    top: 2vh;
+    left: 33%;
+}
+
+.head {
+    margin-left: 100px;
+    margin-right: 100px;
+	margin-top: 50px;
+    display: grid;
+    grid-column-gap: 30px;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(1, 0px);
 }
 
 .user {
@@ -64,7 +70,7 @@ nav {
 }
 
 footer {
-	height: 80px;
+	height: 10vh;
 	background-image: url("../png/fond_nav.png");
 	background-position: center;
 	background-repeat: no-repeat;
@@ -87,6 +93,8 @@ a.bouton {
 	font-family: "Slim Joe";
 	font-size: 20px;
 	color: black;
+    margin-top: 5px;
+    margin-bottom: 10px;
 }
 a.bouton:hover {
 	color : grey;
@@ -120,8 +128,7 @@ textarea{
 
 
 input.search {
-    margin-top: -50px;
-    margin-bottom: 50px;	
+    height: 25px;	
 }
 
 form {

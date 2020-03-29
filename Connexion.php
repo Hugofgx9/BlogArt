@@ -89,7 +89,9 @@ else
 }
 ?>
 
-
+	<footer>
+		<p class="footer">MENTIONS LEGALES</p>
+	</footer>
 
 </body>
 </html>

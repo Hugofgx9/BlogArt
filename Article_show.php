@@ -93,17 +93,21 @@ if (isset($_GET['id']) AND  $_GET['id']) {
 
 	<nav>
 
-		<?php //Le boutton user
-		include './assets/includes/user_link.php';
-		?>
-
 		<a href="index.php"><img class="logo" src="assets/png/logo.png" alt="Logo de l'Avant Première Bordelaise"></a>
 
 	</nav>
 
-	<div class=container>
+	<div class="head"> <!-- Corps de la page -->
 
 		<input class="search" type="input" name="search">
+
+		<div class="user"><?php //Le boutton user
+		include './assets/includes/user_link.php';
+		?>
+		</div>
+
+	</div>
+	<div class=container>
 
 		<!-- <h2> SHOW <?php echo $NumArt ?> </h2> -->
 
@@ -218,7 +222,8 @@ if (isset($_GET['id']) AND  $_GET['id']) {
 		</div>
 	</div>
 
-	<footer>	
+	<footer>
+		<p class="footer">MENTIONS LEGALES</p>
 	</footer>
 
 </body>

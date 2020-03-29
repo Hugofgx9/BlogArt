@@ -9,15 +9,6 @@
 	grid-template-rows: repeat(4, 500px);
 }
 
-.head {
-	margin-left: 100px;
-	margin-right: 100px;
-	display: grid;
-	grid-column-gap: 30px;
-	grid-template-columns: repeat(12, 1fr);
-	grid-template-rows: repeat(1, 0px);	
-}
-
 #last_art {
 	grid-column: 2/12;
 	grid-row: 1;
@@ -84,7 +75,7 @@ h1 /*TITRES*/{
 	font-family: 'Big John';
     width: 30%;
 	font-size: 50px;
-	margin-top: 0px;
+	margin-bottom: 0px;
 }
 
 h2 {
