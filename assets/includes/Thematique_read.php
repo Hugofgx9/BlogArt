@@ -37,8 +37,8 @@
 			  <td><?php echo $row['NumThem']; ?></td>
 			  <td><?php echo $row['LibThem']; ?></td>
 			  <td><?php echo $row['NumLang']; ?></td>
-			  <td><a href="./assets/includes/Thematique_edit.php?id=<?php echo $row['NumThem'] ?>">Modifier</a></td>
-			  <td><a href="./assets/includes/Thematique_delete.php?NumThem=<?php echo $row['NumThem'] ?>">Supprimer</a></td>
+			  <td><a href="./CRUD/Thematique/Thematique_edit.php?id=<?php echo $row['NumThem'] ?>">Modifier</a></td>
+			  <td><a href="./CRUD/Thematique/Thematique_delete.php?NumThem=<?php echo $row['NumThem'] ?>">Supprimer</a></td>
 			</tr>
 
 		<?php
@@ -55,4 +55,4 @@
 	}
 	?>
 
-	<a href="Thematique_insert.php">Créer un nouveau mot-clé</a>
+	<a href="./CRUD/Thematique/Thematique_insert.php">Créer un nouveau mot-clé</a>

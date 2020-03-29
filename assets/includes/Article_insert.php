@@ -249,7 +249,7 @@ $NumLang = "";
 		</div>	
 
 		<div>
-			<label for="UrlPhotA">Choisissez votre photo :</label><input type="file" name="UrlPhotA" id="UrlPhotA" />(Taille max : )
+			<label for="UrlPhotA">Choisissez votre photo :</label><input type="file" name="UrlPhotA" id="UrlPhotA" />(Taille max : 10 Mo)
 		</div>
 
 <!-- 		<div>

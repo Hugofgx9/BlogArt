@@ -65,7 +65,7 @@ table {
 	width: 100%;
 }
 
-#backtosite {
+.categories li a {
 	color: white;
 	text-decoration: none;
 	font-family: "Slim Joe";
@@ -74,12 +74,8 @@ table {
 	margin-bottom: 70px;
 }
 
-#deconnexion {
-	color: white;
-	text-decoration: none;
-	font-family: "Slim Joe";
-	font-size: 18px;
-	text-align: center;
+#togg2 a{
+	font-size:12px;
 }
 
 form div {

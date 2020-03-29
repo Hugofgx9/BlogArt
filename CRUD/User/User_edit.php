@@ -71,9 +71,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")  {
 				) //array
 			); //$query->execute
 
-			$query->closeCursor();
+			if (!empty($_SESSION['backpage'])){
 
-			header("Location:User_read.php");
+				header("location:".  $_SESSION['backpage']);;
+			}
+
+			else {
+				header("location:Thematique_read.php");
+			}
 
 		} //if (((isset($_POST['LibCom'])) AND !empty($_POST['LibCom'])) [...] AND (*Submit == "Valider")))
 		else {

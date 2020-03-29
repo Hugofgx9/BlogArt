@@ -26,7 +26,7 @@ if (isset($_GET['id']) AND  $_GET['id']) {
 
 		$object = $query->fetchObject();
 		$LibThem = $object->LibThem;
-		$NumLang = $object->NumLang;
+		$NumLang_get = $object->NumLang;
 	}
 
 }
@@ -61,7 +61,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")  {
 
 			$query->closeCursor();
 
-			header("Location:Thematique_read.php");
+			if (!empty($_SESSION['backpage'])){
+
+				header("location:".  $_SESSION['backpage']);;
+			}
+
+			else {
+				header("location:Thematique_read.php");
+			}
+
 
 		} //if (((isset($_POST['LibThem'])) AND !empty($_POST['LibThem'])) [...] AND (*Submit == "Valider")))
 		else {

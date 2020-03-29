@@ -61,7 +61,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")  {
 
 			$query->closeCursor();
 
-				header("Location:Angle_read.php");
+			if (!empty($_SESSION['backpage'])){
+
+				header("location:".  $_SESSION['backpage']);;
+			}
+
+			else {
+				header("location:Angle_read.php");
+			}
 
 		} //if (((isset($_POST['LibAngl'])) AND !empty($_POST['LibAngl'])) [...] AND (*Submit == "Valider")))
 		else {

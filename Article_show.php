@@ -26,6 +26,7 @@ $NumArt = "";
 if (isset($_GET['id']) AND  $_GET['id']) {
 
 	$NumArt = $_GET['id'];
+	$NumArtCom = $_GET['id'];
 
 	$queryText = 'SELECT * FROM ARTICLE WHERE NumArt = :NumArt;';
 	$query = $bdPdo->prepare($queryText);
@@ -93,13 +94,21 @@ if (isset($_GET['id']) AND  $_GET['id']) {
 
 	<nav>
 
-		<?php //Le boutton user
-		include './assets/includes/user_link.php';
-		?>
-
 		<a href="index.php"><img class="logo" src="assets/png/logo.png" alt="Logo de l'Avant Première Bordelaise"></a>
 
 	</nav>
+
+	<div class="head"> <!-- Corps de la page -->
+
+<!-- 		<input class="search" type="input" name="search"> -->
+
+		<div class="user">
+			<?php //Le boutton user
+				include './assets/includes/user_link.php';
+			?>
+		</div>
+
+	</div>
 
 	<div class=container>
 
@@ -110,7 +119,7 @@ if (isset($_GET['id']) AND  $_GET['id']) {
 		<input type="hidden" id="id" name="id" value="<?php echo $_GET['id'] ?>">
 
 			<!-- <img src="<?php if(isset($_GET['id']))echo $UrlPhotA?>"> -->
-			<img src="assets/image_article/<?php if(isset($_GET['id']))echo $UrlPhotA?>" alt="Couverture de l'article">
+			<img class="illustration" src="assets/image_article/<?php if(isset($_GET['id']))echo $UrlPhotA?>" alt="Couverture de l'article">
 			<p class="date">JJ/MM/AAAA HH:MM</p>
 		<h1>
 			<!-- <acronym title="LibTitrA :"> -->
@@ -161,11 +170,154 @@ if (isset($_GET['id']) AND  $_GET['id']) {
 			 <!-- <acronym title="LibConclA :"> -->
 			<?php if(isset($_GET['id']))echo $LibConclA?>
 			<!-- </acronym> -->
-		</ps>	
+		</p>	
 
 		<p  class="nbLike">
 			<img src="assets/png/unlike.png" class="like" alt="Like">
 		</p>
+
+
+<!-- 		<p>
+			<input class="nbLike" type="button" alt="Like" style="background-image:url('assets/png/unlike.png')"/>
+		</p> -->
+
+		<div id="comments">
+			<?php //les commentaires
+
+				include './assets/includes/Connect_PDO.php';
+				
+			    $query = "SELECT * FROM COMMENT WHERE NumArt = :NumArt ORDER BY DtCreC DESC;";
+			    try {
+			      $bdPdo_select = $bdPdo->prepare($query);
+			      $bdPdo_select->execute(
+			      	array(
+  						':NumArt' => $NumArt,	
+		      	  )); // recup toutes les infos nécéssaires
+			      $NbreData = $bdPdo_select->rowCount(); // nombre d'enregistrements
+			      $rowAll = $bdPdo_select->fetchAll();
+			    }
+			    catch (PDOException $e) {
+			      echo 'Erreur SQL : '. $e->getMessage().'<br/>';
+			      die();
+			    }
+
+			    echo '<h4>Commentaires : </h4>';
+
+			    if ($NbreData != 0) {		    	
+
+					foreach ($rowAll as $row) {
+						echo '<div class="comment">
+									<p>' . $row['LibCom'] . '</p>
+									<p>' . $row['PseudoAuteur'] . '</p>
+							  </div>';
+					}
+				}
+
+				if (!empty($_SESSION['Login'])) {
+					echo '<form method="POST" action="Article_show.php">
+							<input type="hidden" name="NumArtforCom" value="' . $NumArt .'">
+							<input type="text" name="LibCom" id="LibCom">
+							<input type="submit" name="Submit" value="Ajouter un commentaire">
+						</form>';
+
+
+						if ($_SERVER["REQUEST_METHOD"] == "POST")  {
+
+							// SUBMIT
+							$Submit = isset($_POST['Submit']) ? $_POST['Submit'] : '';
+
+								if (((isset($_POST['LibCom'])) AND !empty($_POST['LibCom']))
+									// AND ((isset($_POST['DtCreC'])) AND !empty($_POST['DtCreC']))
+									//AND ((isset($_POST['PseudoAuteur'])) AND !empty($_POST['PseudoAuteur']))
+									//AND ((isset($_POST['EmailAuteur'])) AND !empty($_POST['EmailAuteur']))
+									//AND ((isset($_POST['TitrCom'])) AND !empty($_POST['TitrCom']))
+									//AND ((isset($_POST['NumArt'])) AND !empty($_POST['NumArt']))
+									AND (!empty($_POST['Submit']) AND ($Submit == "Ajouter un commentaire"))) {
+
+
+									$erreur = false;
+
+									$NumCom = 0;
+								    $dt = new DateTime();
+					    			$DtCreC = $dt->format('Y-m-d H:i:s');
+									$PseudoAuteur = $_SESSION['Login'];
+									$EmailAuteur = $_SESSION['EMail'];
+									$LibCom = (ctrlSaisies($_POST["LibCom"]));
+									$TitrCom = substr($LibCom, 0, 15);
+									$NumArtforCom = (ctrlSaisies($_POST["NumArtforCom"]));
+
+									$parmNumCom = "%"; // exemple : '021'
+									$requete = "SELECT MAX(NumCom) AS NumCom FROM COMMENT WHERE NumCom LIKE '$parmNumCom';";
+
+									$result = $bdPdo->query($requete);
+
+									if ($result) {
+
+										$tuple = $result->fetch();
+										$NumCom = $tuple["NumCom"];
+
+										if (is_null($NumCom)) {
+
+											$NumCom = 001;
+
+										} //if (is_null($NumCom))
+										else {
+
+											$NumCom = $tuple["NumCom"];
+											$numSeqCom = (int)$NumCom;
+										} //else
+
+										$numSeqCom++;
+
+										// clé primR reconstituée
+										if ($numSeqCom < 10) {
+											$NumCom = "00" . $numSeqCom;
+										} //if ($numSeqCom < 10)
+										else if ($numSeqCom < 100 ) {
+											$NumCom = "0" . $numSeqCom;
+										}
+										else {
+											$NumCom = $numSeqCom;
+										} //else
+									} //if ($result)
+
+										$query = $bdPdo->prepare('INSERT INTO COMMENT (NumCom, DtCreC, PseudoAuteur, EmailAuteur, TitrCom, LibCom, NumArt) VALUES (:NumCom, :DtCreC, :PseudoAuteur, :EmailAuteur, :TitrCom, :LibCom, :NumArt);');
+
+										//PB $NumArt n'a plus de valeurs
+
+										$query->execute(
+											array(
+												':NumCom' => $NumCom,
+												':DtCreC' => $DtCreC,
+												':PseudoAuteur' => $PseudoAuteur,
+												':EmailAuteur' => $EmailAuteur,
+												':TitrCom' => $TitrCom,
+												':LibCom' => $LibCom,
+												':NumArt' => $NumArtforCom
+											) //array
+										); //$query->execute
+
+										$Comid = $NumCom;
+
+										$query->closeCursor();
+
+											header("location:".  $_SERVER['HTTP_REFERER']); 
+
+								} //if (((isset($_POST['LibCom'])) AND !empty($_POST['LibCom'])) [...] AND (*Submit == "Valider")))
+								else {
+
+									$erreur = true;
+
+								} //else
+							
+
+						} //if ($_SERVER["REQUEST_METHOD"] == "POST")
+				}
+				else {
+					echo'<a href="Connexion.php">Connectez vous</a> avant d\'ajouter un commentaires';
+				}
+			?>
+		</div>
 
 		<div id="art_last"> 
 			<h2>Les derniers articles :</h2>
@@ -214,11 +366,12 @@ if (isset($_GET['id']) AND  $_GET['id']) {
 					}
 				?>
 			</div>
-			<a class="bouton" href="">Voir tout</a>
+			<a class="bouton" href="Article_all.php">Voir tout</a>
 		</div>
 	</div>
 
-	<footer>	
+	<footer>
+		<p class="footer">MENTIONS LEGALES</p>	
 	</footer>
 
 </body>

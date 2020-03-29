@@ -43,8 +43,8 @@
 			  <td><?php echo $row['FirstName']; ?></td>
 			  <td><?php echo $row['EMail']; ?></td>
 			  <td><?php echo $row['admin']; ?></td>
-			  <td><a href="User_edit.php?id=<?php echo $row['Login'] ?>">Modifier</a></td>
-			  <td><a href="User_delete.php?Login=<?php echo $row['Login'] ?>">Supprimer</a></td>
+			  <td><a href="./CRUD/User/User_edit.php?id=<?php echo $row['Login'] ?>">Modifier</a></td>
+			  <td><a href="./CRUD/User/User_delete.php?Login=<?php echo $row['Login'] ?>">Supprimer</a></td>
 			</tr>
 
 		<?php
@@ -61,4 +61,4 @@
 	}
 	?>
 
-	<a href="User_insert.php">Créer un nouveau User</a>
+	<a href="./CRUD/User/User_insert.php">Créer un nouveau User</a>

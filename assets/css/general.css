@@ -10,27 +10,12 @@
     font-weight: normal;
     src: local('Slim Joe Regular'), url('Slim-Joe.woff') format('woff');
 }
-@font-face {
-    font-family: 'MADE Canvas Regular';
-    font-style: normal;
-    font-weight: normal;
-    src: local('MADE Canvas Regular'), url('MADE Canvas Regular PERSONAL USE.woff') format('woff');
-}
-@font-face {
-    font-family: 'MADE Canvas Light';
-    font-style: normal;
-    font-weight: normal;
-    src: local('MADE Canvas Light'), url('MADE Canvas Light PERSONAL USE.woff') format('woff');
-}
-@font-face {
-    font-family: 'MADE Canvas Black';
-    font-style: normal;
-    font-weight: normal;
-    src: local('MADE Canvas Black'), url('MADE Canvas Black PERSONAL USE.woff') format('woff');
-}
+
+@import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
 
 
 body {
+	font-family: 'Open Sans', sans-serif;
 	margin: 0px;
 	background-color: #F8F8F8;
 	background-attachment:fixed;
@@ -45,7 +30,14 @@ nav {
 	background-size: cover;
 	margin-top: 0px;
 	margin-bottom: 0px;
-	
+}
+
+.head {
+	margin-left: 100px;
+	margin-right: 100px;
+	display: grid;
+	grid-column-gap: 30px;
+	grid-template-columns: repeat(12, 1fr);
 }
 
 .logo {
@@ -73,10 +65,11 @@ footer {
 
 p.footer {
 	font-family: 'Slim Joe';
-	font-size: 25px;
+	font-size: 20px;
 	text-align: center;
 	vertical-align: middle;
 	color: white;
+	padding-top: 30px;
 }
 
 a {
@@ -104,7 +97,6 @@ input.bouton:hover {
 
 input, textarea{
 	grid-column: 10/13;
-	font-family: 'MADE Canvas Regular';
 	font-size: 20px;
 	padding: 8px;
 	border: 0px;
@@ -116,8 +108,6 @@ textarea{
      -moz-box-sizing: border-box;    /* Firefox, other Gecko */
      box-sizing: border-box;         /* Opera/IE 8+ */
 }
-
-
 
 input.search {
     margin-top: -50px;
@@ -136,11 +126,10 @@ form {
 	margin-bottom: 20px;
 }
 #connexion label {
-	font-family: "MADE Canvas Regular";
+
 	font-size: 25px;
 }
 #connexion p {
-	font-family: "MADE Canvas Regular";
 	text-align: center;
 }
 
@@ -152,11 +141,9 @@ form {
     margin-bottom: 20px;
 }
 #register label {
-	font-family: "MADE Canvas Regular";
 	font-size: 25px;
 }
 #register p {
-	font-family: "MADE Canvas Regular";
 	text-align: center;
 }
 
@@ -165,7 +152,6 @@ form {
 }
 
 .formulaire p {
-	font-family: "MADE Canvas Regular";
 	font-size: 25px;
 }
 
@@ -178,7 +164,6 @@ form {
 .formulaire label {
 	grid-column: 5/10; 
 	grid-row: 2;
-	font-family: "MADE Canvas Regular";
 	font-size: 30px;
 }
 
@@ -194,9 +179,13 @@ tr:nth-child(odd) {
 
 tr {
     border-top: 1px;
-    border-top-style: solid;
+    border-top-style: none;
     border-color: black;
     border-width: 1px;
+}
+
+td {
+	padding: 20px 15px;
 }
 
 table {

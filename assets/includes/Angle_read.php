@@ -37,8 +37,8 @@
 			  <td><?php echo $row['NumAngl']; ?></td>
 			  <td><?php echo $row['LibAngl']; ?></td>
 			  <td><?php echo $row['NumLang']; ?></td>
-			  <td><a href="Angle_edit.php?id=<?php echo $row['NumAngl'] ?>">Modifier</a></td>
-			  <td><a href="Angle_delete.php?NumAngl=<?php echo $row['NumAngl'] ?>">Supprimer</a></td>
+			  <td><a href="./CRUD/Angle/Angle_edit.php?id=<?php echo $row['NumAngl'] ?>">Modifier</a></td>
+			  <td><a href="./CRUD/Angle/Angle_delete.php?NumAngl=<?php echo $row['NumAngl'] ?>">Supprimer</a></td>
 			</tr>
 
 		<?php
@@ -55,4 +55,4 @@
 	}
 	?>
 
-	<a href="Angle_insert.php">Créer un nouvel angle</a>
+	<a href="./CRUD/Angle/Angle_insert.php">Créer un nouvel angle</a>

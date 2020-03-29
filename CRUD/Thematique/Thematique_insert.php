@@ -88,7 +88,7 @@
 
 				$query->closeCursor();
 
-					header("Location:Thematique_read.php");
+					header("location:".  $_SERVER['HTTP_REFERER']);;
 
 			} //if (((isset($_POST['LibThem'])) AND !empty($_POST['LibThem'])) [...] AND (*Submit == "Valider")))
 			else {

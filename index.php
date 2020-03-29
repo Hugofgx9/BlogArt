@@ -112,7 +112,7 @@ session_start();
 					}
 				?>
 			</div>
-			<a class="bouton" href="">Voir tout</a>
+			<a class="bouton" href="Article_all.php">Voir tout</a>
 		</div>
 
 		<div id="events">
@@ -159,7 +159,7 @@ session_start();
 					}
 				?>
 			</div>
-			<a class="bouton" href="">Voir tout</a>
+			<a class="bouton" href="Article_all.php">Voir tout</a>
 		</div>
 
 		<div id="portraits">
@@ -206,7 +206,7 @@ session_start();
 					}
 				?>
 			</div>
-			<a class="bouton" href="">Voir tout</a>
+			<a class="bouton" href="Article_all.php">Voir tout</a>
 		</div>
 	</div>
 

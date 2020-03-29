@@ -167,9 +167,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")  {
 				)
 			);
 
-			$query->closeCursor();
+			if (!empty($_SESSION['backpage'])){
 
-				header("Location:Article_read.php");
+				header("location:".  $_SESSION['backpage']);;
+			}
+
+			else {
+				header("location:Article_read.php");
+			}
 
 		} //if (((isset($_POST['Parag1A'])) AND !empty($_POST['Parag1A'])) [...] AND (*Submit == "Valider")))
 		else {

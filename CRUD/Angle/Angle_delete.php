@@ -21,5 +21,5 @@ try {
 	}
 
 	$query->closeCursor();
-		header("Location:Angle_read.php");
+		header("location:".  $_SERVER['HTTP_REFERER']);
 ?>

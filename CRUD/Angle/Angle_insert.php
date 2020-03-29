@@ -89,7 +89,7 @@
 
 					$query->closeCursor();
 
-						header("Location:Angle_read.php");
+						header("location:".  $_SERVER['HTTP_REFERER']);;
 
 			} //if (((isset($_POST['LibAngl'])) AND !empty($_POST['LibAngl'])) [...] AND (*Submit == "Valider")))
 			else {

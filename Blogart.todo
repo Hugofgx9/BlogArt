@@ -1,10 +1,3 @@
-Insert Motcle ne peux pas créer de clé pour des nouvelles langues même si les clés sont bien générées 
-Insert Thematique ne peux pas créer de clé pour des nouvelles langues même si les clés sont bien générées
-
-
-Article :
-
-
 SELECTED
 selectbox article get NumMoCle pb
 
@@ -21,5 +14,8 @@ commentaires --> connexion
 likes
 afficher les libellé plutot que les clés dans le back ends
 
+commentaires : impossible de créer commentaire pcq pb $NumArt;
+
 custom select
 
+mots clés avec des virgules et explode()

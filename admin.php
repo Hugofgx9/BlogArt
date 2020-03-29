@@ -3,6 +3,9 @@ session_start();
 
 
 if (!empty($_SESSION['admin']) AND $_SESSION['admin'] == 1){
+
+	$_SESSION['backpage'] = $_SERVER['HTTP_REFERER'];
+	
 	echo '<!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -20,12 +23,13 @@ if (!empty($_SESSION['admin']) AND $_SESSION['admin'] == 1){
 
 	<ul class="container">
 		<div class="categories">
-			<li><a href="index.php">Revenir au site</a></li>
+			<li><a id="backtosite" href="index.php">Revenir au site</a></li>
 			<li><button id="togg1">Creer un article</button></li>
 			<li><button id="togg2">Gerer ses articles</button></li>
 			<li><button id="togg3">Gerer ses thematiques</button></li>
 			<li><button id="togg4">Gerer ses angles</button></li>
 			<li><button id="togg5">Gerer ses utilisateurs</button></li>
+			<li><a id="deconnexion" href ="deconnexion.php"><button>Deconnexion</button></a></li>
 		</div>';
 
 
@@ -47,6 +51,7 @@ if (!empty($_SESSION['admin']) AND $_SESSION['admin'] == 1){
 	echo'</ul>
 
 	<footer>
+		<p class="footer">MENTIONS LEGALES</p>
 	</footer>
 </body>';
 }

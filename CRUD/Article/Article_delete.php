@@ -30,5 +30,5 @@ try {
 	}
 
 	$query->closeCursor();
-		header("Location:Article_read.php");
+		header("location:".  $_SERVER['HTTP_REFERER']);
 ?>

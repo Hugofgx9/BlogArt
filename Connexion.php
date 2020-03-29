@@ -18,10 +18,6 @@ include './CRUD/includes/ctrlSaisies.php';
 <body>
 
 	<nav>
-
-		<?php //Le boutton user
-		include './assets/includes/user_link.php';
-		?>
 		
 	</nav>
 
@@ -29,7 +25,7 @@ include './CRUD/includes/ctrlSaisies.php';
 
 		<a href="index.php"><img class="logo" src="assets/png/logo.png" alt="Logo de l'Avant Première Bordelaise"></a>
 
-<h1>Connexion</h1>
+		<h1>Connexion</h1>
 
 <?php
 if (!isset($_POST['Login'])) //On est dans la page de formulaire
@@ -63,7 +59,8 @@ else
         $query->bindValue(':Login',$_POST['Login'], PDO::PARAM_STR);
         $query->execute();
         $data=$query->fetch();
-	if ($data['Pass'] == $_POST['Pass']) // Acces OK !
+
+	if ($data AND $data['Pass'] == $_POST['Pass']) // Acces OK !
 	{
 	    $_SESSION['Login'] = $data['Login'];
 	    $_SESSION['admin'] = $data['admin'];
@@ -71,7 +68,7 @@ else
 	    $message = '<p>Bienvenue '.$data['Login'].',
 			vous êtes maintenant connecté!</p>
 			<p>Cliquez <a href="./index.php">ici</a>
-			pour revenir à la page d accueil</p>';
+			pour revenir à la page d\'accueil</p>';
 	}
 	else // Acces pas OK !
 	{
@@ -88,6 +85,11 @@ else
 
 }
 ?>
+
+	<footer>
+		<p class="footer">MENTIONS LEGALES</p>
+	</footer>
+
 
 
 

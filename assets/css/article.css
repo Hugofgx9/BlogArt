@@ -28,18 +28,21 @@
 
 /*IMAGE*/
 
-img {
+.illustration {
 	grid-column: 4/11;
 	width: 44vw;
+	margin-top: 60px;
+	border-color: black;
+    border-style: solid;
 }
 
 .like {
 	width: 3%;
 }
 .nbLike {
-	font-family: 'MADE Canvas Regular';
 	font-size: 30px;
 	vertical-align: middle;
+
 }
 
 /*TEXTE*/
@@ -55,30 +58,26 @@ h1 /*TITRES*/{
 	text-align: center;
 	font-family: 'Big John';
 	font-size: 50px;
-	margin-top: 0px;
+	margin-top: 40px;
 }
 
 h2 /*CHAPPOS*/ {
 	text-align: center;
-	font-family: 'MADE Canvas Regular';
-	font-size: 30px;
+	font-size: 20px;
 }
 
 h3 /*SS-TITRES*/ {
-	font-family: 'MADE Canvas Black';
-	font-size: 33px;
+	font-size: 25px;
 	margin-bottom: 15px;
 }
 
 h4 /*§ + CONCLUSION*/ {
-	font-family: 'MADE Canvas Light';
-	font-size: 22px;
+	font-size: 20px;
 	margin-top: 0px;
 }
 
 p /*§ + CONCLUSION*/ {
-	font-family: 'MADE Canvas Light';
-	font-size: 22px;
+	font-size: 18px;
 	margin-top: 0px;
 }
 
@@ -92,6 +91,8 @@ p /*§ + CONCLUSION*/ {
 .trio + a {
 	display: flex;
 	justify-content: center;
+	margin-top: 30px;
+	margin-bottom: 30px;
 }
 
 div.trio div {
@@ -123,4 +124,30 @@ div.trio a {
 
 #art_last {
 	grid-column: 2/12;
+	margin-top: 80px;
+}
+
+#comments {
+	grid-column: 3/11;
+	margin-top: 50px;
+	line-height: 100%;
+}
+
+.comment :nth-child(1){
+	border-style: solid;
+	border-color: black;
+	border-width: 1px;
+	padding: 10px 10px;
+	margin-bottom: 2px;
+	font-size: 17px;
+}
+
+.comment :nth-child(2){
+	font-size: 15px;
+	padding-left: 40vw;
+
+}
+
+#comments h4{
+	margin-bottom: 10px;
 }
