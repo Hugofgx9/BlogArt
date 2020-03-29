@@ -18,7 +18,7 @@ if (!empty($_SESSION['admin']) AND $_SESSION['admin'] == 1){
 <body>
 
 	<nav>
-	<a><img class="logo" src="assets/png/logo.png" alt="Logo du site"></a>
+	<a href="index.php"><img class="logo" src="assets/png/logo.png" alt="Logo de l\'Avant Première Bordelaise"></a>
 	</nav>
 
 	<ul class="container">

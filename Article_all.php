@@ -17,7 +17,7 @@ session_start();
 
 	<nav><!-- 		<a><img src="assets/png/logo.png"></a> -->
 
-	<a><img class="logo" src="assets/png/logo.png" alt="Logo de l'Avant Première Bordelaise"></a>
+	<a href="index.php"><img class="logo" src="assets/png/logo.png" alt="Logo de l'Avant Première Bordelaise"></a>
 
 	</nav>
 

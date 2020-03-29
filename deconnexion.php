@@ -9,6 +9,7 @@
 <body>
 
 	<nav>
+		<a href="index.php"><img class="logo" src="assets/png/logo.png" alt="Logo de l'Avant Première Bordelaise"></a>
 	</nav>
 
 	<div class=container>

@@ -55,6 +55,12 @@ div.trio div {
     width: 20vw;
     overflow: hidden;
 }
+
+#last_art div img {
+	border-color: black;
+    border-style: solid;
+}
+
 div.trio div h4 {
 	font-family: 'Big John';
 	font-size: 20px;

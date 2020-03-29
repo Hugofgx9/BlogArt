@@ -21,7 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")  {
 			//AND ((isset($_POST['Likes'])) AND !empty($_POST['Likes']))
 			//AND ((isset($_POST['NumAngl'])) AND !empty($_POST['NumAngl']))
 			//AND ((isset($_POST['NumThem'])) AND !empty($_POST['NumThem']))
-			//AND ((isset($_POST['NumLang'])) AND !empty($_POST['NumLang']))
+			AND ((isset($_POST['MotClePOST'])) AND !empty($_POST['MotClePOST']))
 			AND (!empty($_FILES['UrlPhotA']['size']))
 			AND (!empty($_POST['Submit']) AND ($Submit == "Valider"))) {
 
@@ -46,7 +46,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")  {
 			$NumThem = (ctrlSaisies($_POST["TypThem"]));
 			$NumLang = (ctrlSaisies($_POST["TypLang"]));
 
-			$NumMoCle = (ctrlSaisies($_POST["TypMoCle1"]));
+			$ListLibMoCle = explode (" ", $_POST["MotClePOST"]);
+
+			//$NumMoCle = (ctrlSaisies($_POST["TypMoCle1"]));
 
 
 
@@ -152,20 +154,111 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")  {
 
 				$query->closeCursor();
 
-				$query = $bdPdo->prepare('INSERT INTO MOTCLEARTICLE (NumArt, NumMoCle) VALUES (:NumArt, :NumMoCle);');
 
-				$query->execute(
-					array(
-						':NumArt' => $NumArt,
-						':NumMoCle' => $NumMoCle
-					)
-				);
+				foreach ($ListLibMoCle as $LibMoCle) {
+					$LibMoCle = ucfirst((ctrlSaisies($LibMoCle)));
 
-				$query->closeCursor();
+					$query = "SELECT * FROM MOTCLE WHERE LibMoCle = '$LibMoCle'";
 
-					//header("Location:Article_read.php");
+			    	$bdPdo_select = $bdPdo->prepare($query);
+			    	$bdPdo_select->execute(
+			      		array(
+  							':NumArt' => $NumArt,	
+		      		)); // recup toutes les infos nécéssaires
+			    	$NbreData = $bdPdo_select->rowCount(); // nombre d'enregistrements
+			    	$rowAll = $bdPdo_select->fetchAll();
+
+					if($NbreData == 0){//Le mot clé n'existe pas dans MOTCLE donc on l'insert
+
+				      // Découpage FK LANGUE 
+				        $LibLangSelect = substr($NumLang, 0, 4); 
+				        $parmNumLang = $LibLangSelect . '%';
+
+				        $requete = "SELECT MAX(NumLang) AS NumLang FROM MOTCLE WHERE NumLang LIKE '$parmNumLang';";
+				        $result1 = $bdPdo->query($requete);
+
+
+				        if ($result1) {
+				            $tuple = $result1->fetch();
+				            $NumLang = $tuple["NumLang"];
+				            if (is_null($NumLang)) {    // New lang dans MOCLE
+				                // Récup dernière PK utilisée
+				                $requete = "SELECT MAX(NumMoCle) AS NumMoCle FROM MOTCLE;";
+				                $result1 = $bdPdo->query($requete);
+				                $tuple = $result1->fetch();
+				                $NumMoCle = $tuple["NumMoCle"];
+
+				                $NumMoCleSelect = (int)substr($NumMoCle, 4, 2);
+				                // No séquence suivant LANGUE
+				                $numSeq1MoCle = $NumMoCleSelect + 1;
+				                // Init no séquence MOCLE pour nouvelle lang
+				                $numSeq2MoCle = 1;
+				            }
+				            else {
+				                // Récup dernière PK pour FK sélectionnée
+				                $requete = "SELECT MAX(NumMoCle) AS NumMoCle FROM MOTCLE WHERE NumLang LIKE '$parmNumLang' ;";
+				                $result1 = $bdPdo->query($requete);
+				                $tuple = $result1->fetch();
+				                $NumMoCle = $tuple["NumMoCle"];
+
+				                // No séquence actuel LANGUE
+				                $numSeq1MoCle = (int)substr($NumMoCle, 4, 2);
+				                // No séquence actuel MOCLE
+				                $numSeq2MoCle = (int)substr($NumMoCle, 6, 2); 
+				                // No séquence suivant MOCLE
+				                $numSeq2MoCle++;
+				            }
+
+				            $LibMoCleSelect = "MTCL";
+				            // PK reconstituée : MTCL + no seq langue
+				            if ($numSeq1MoCle < 10) {
+				                $NumMoCle = $LibMoCleSelect . "0" . $numSeq1MoCle;
+				            }
+				            else {
+				                $NumMoCle = $LibMoCleSelect . $numSeq1MoCle;
+				            }
+				            // PK reconstituée : MOCL + no seq langue + no seq mo clé
+				            if ($numSeq2MoCle < 10) {
+				                $NumMoCle = $NumMoCle . "0" . $numSeq2MoCle;
+				            }
+				            else {
+				                $NumMoCle = $NumMoCle . $numSeq2MoCle;
+				            }
+				        }   // End of if ($result) / no seq LANGUE
+
+
+						$query = $bdPdo->prepare('INSERT INTO MOTCLE (NumMoCle, LibMoCle, NumLang) VALUES (:NumMoCle, :LibMoCle, :NumLang);');
+
+						$query->execute(
+							array(
+								':NumMoCle' => $NumMoCle,
+								':LibMoCle' => $LibMoCle,
+								':NumLang' => $NumLang
+							) //array
+						); //$query->execute						
+					}
+		
+					
+					else {//Le mot clé existe, on récupère NumMoCle
+
+						$NumMoCle = $rowAll[0]['NumMoCle'];
+
+					}
+
+					$query = $bdPdo->prepare('INSERT INTO MOTCLEARTICLE (NumArt, NumMoCle) VALUES (:NumArt, :NumMoCle);');
+
+					$query->execute(
+						array(
+							':NumArt' => $NumArt,
+							':NumMoCle' => $NumMoCle
+						)
+					);
+
+					$query->closeCursor();
+
+						//header("Location:Article_read.php");
+				}
 			}
-
 		} //if (((isset($_POST['LibArt'])) AND !empty($_POST['LibArt'])) [...] AND (*Submit == "Valider")))
 		else {
 
@@ -383,7 +476,7 @@ $NumLang = "";
 
 
 	    <!-- Listbox MoCle1 -->
-        <div class="customselect">
+<!--         <div class="customselect">
 	        <label for="LibTypMoCle1">	     
 	                Mot Clé :
 	        </label>
@@ -416,8 +509,13 @@ $NumLang = "";
 			            }   // if ($result)
 			?> 
 	        </select>
-    	</div>
+    	</div> -->
     	<!-- FIN Listbox MoCle1 -->
+
+		<div>
+			<label>Mot Clé :</label>
+			<input placeholder="Séparer les mots clés par un espace"type="text" name="MotClePOST">
+		</div>	
 
 
 		<div>

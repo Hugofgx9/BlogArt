@@ -167,9 +167,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")  {
 		<p class="footer">MENTIONS LEGALES</p>
 	</footer>
 
-	<footer>
-		<p class="footer">MENTIONS LEGALES</p>
-	</footer>
 
 </body>
 </html>

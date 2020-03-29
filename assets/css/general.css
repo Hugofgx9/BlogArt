@@ -59,21 +59,25 @@ footer {
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;
-}
-
-p.footer {
-	font-family: 'Slim Joe';
-	font-size: 20px;
-	text-align: center;
-	vertical-align: middle;
-	color: white;
-	padding-top: 30px;
+	display: flex;
+	justify-content: center;
 }
 
 a {
 	grid-column: 1/12;
     width: 100%;
 }
+
+a.footer {
+	font-family: 'Slim Joe';
+	font-size: 12px;
+	text-align: center;
+	vertical-align: middle;
+	color: white;
+	padding-top: 30px;
+	margin-top: 0px;
+}
+
 a.bouton {
 	font-family: "Slim Joe";
 	font-size: 20px;
@@ -100,6 +104,10 @@ input, textarea{
 	font-size: 20px;
 	padding: 8px;
 	border: 0px;
+}
+
+input[type='file'] {
+	font-size: 13px;
 }
 
 textarea{ 

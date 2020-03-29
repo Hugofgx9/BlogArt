@@ -1,9 +1,8 @@
 <?php
 
-include '../includes/Connect_PDO.php';
+include 'Connect_PDO.php';
 
-$Login = $_GET['Login'];
-$Login = $_SESSION['Login'];
+$Login = $_GET['id'];
 
 try {
 		$bdPdo->beginTransaction();
@@ -22,5 +21,6 @@ try {
 	}
 
 	$query->closeCursor();
-		header("location:".  $_SERVER['HTTP_REFERER']);
+		header("location:../../deconnexion.php");
 ?>
+

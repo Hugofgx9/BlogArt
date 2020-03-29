@@ -19,3 +19,5 @@ commentaires : impossible de créer commentaire pcq pb $NumArt;
 custom select
 
 mots clés avec des virgules et explode()
+
+modifier et créer ne rammenent pas à la bonne page.

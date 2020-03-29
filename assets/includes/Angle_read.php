@@ -20,9 +20,7 @@
 	<table>
 		<thead>
 		  <tr>
-		      <th>NumAngl</th>
-		      <th>LibAngl</th>
-		      <th>NumLang</th>
+		      <th>Angle</th>
 		      <th>Modifier</th>
 		      <th>Supprimer</th>
 		  </tr>
@@ -34,9 +32,7 @@
 		?>
 
 			<tr>
-			  <td><?php echo $row['NumAngl']; ?></td>
 			  <td><?php echo $row['LibAngl']; ?></td>
-			  <td><?php echo $row['NumLang']; ?></td>
 			  <td><a href="./CRUD/Angle/Angle_edit.php?id=<?php echo $row['NumAngl'] ?>">Modifier</a></td>
 			  <td><a href="./CRUD/Angle/Angle_delete.php?NumAngl=<?php echo $row['NumAngl'] ?>">Supprimer</a></td>
 			</tr>
