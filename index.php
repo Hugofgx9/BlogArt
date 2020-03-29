@@ -122,7 +122,7 @@ session_start();
 
 					include './CRUD/includes/Connect_PDO.php';
 					
-				    $query = "SELECT * FROM ARTICLE WHERE NumThem = 'THE0106'";
+				    $query = "SELECT * FROM ARTICLE WHERE NumThem = 'THE0101'";
 				    try {
 				      $bdPdo_select = $bdPdo->prepare($query);
 				      $bdPdo_select->execute(); // recup toutes les infos nécéssaires
@@ -163,13 +163,13 @@ session_start();
 		</div>
 
 		<div id="portraits">
-			<h2>Portraits :</h2>
+			<h2>Histoire :</h2>
 			<div class="trio">
 				<?php //liste 3 évenements
 
 					include './CRUD/includes/Connect_PDO.php';
 					
-				    $query = "SELECT * FROM ARTICLE WHERE NumThem = 'THE0107'";
+				    $query = "SELECT * FROM ARTICLE WHERE NumThem = 'THE0105'";
 				    try {
 				      $bdPdo_select = $bdPdo->prepare($query);
 				      $bdPdo_select->execute(); // recup toutes les infos nécéssaires

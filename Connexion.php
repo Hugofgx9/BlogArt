@@ -85,14 +85,8 @@ else
 ?>
 
 	<footer>
-		<p class="footer">MENTIONS LEGALES</p>
+		<a href='mentions.php' class="footer">MENTIONS LEGALES</a>
 	</footer>
-<<<<<<< HEAD
-
-
-
-=======
->>>>>>> 2e9938d6854054a506bfc441f1dec93a6869a9aa
 
 </body>
 </html>

@@ -81,7 +81,7 @@ session_start();
 	</div>
 
 	<footer>
-		<p class="footer">MENTIONS LEGALES</p>
+		<a href='mentions.php' class="footer">MENTIONS LEGALES</a>
 	</footer>
 
 </body>

@@ -51,7 +51,7 @@ if (!empty($_SESSION['admin']) AND $_SESSION['admin'] == 1){
 	echo'</ul>
 
 	<footer>
-		<p class="footer">MENTIONS LEGALES</p>
+		<a href="mentions.php" class="footer">MENTIONS LEGALES</a>
 	</footer>
 </body>';
 }

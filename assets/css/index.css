@@ -81,11 +81,11 @@ div.trio a {
 }
 
 h1 /*TITRES*/{
-	grid-row: 9/12;
+	grid-row: 8/13;
 	text-align: left;
-	font-family: 'Big John';
+	font-family: 'Open Sans', sans-serif;
     width: 30%;
-	font-size: 50px;
+	font-size: 30px;
 	margin-bottom: 0px;
 }
 
